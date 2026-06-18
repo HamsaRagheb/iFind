@@ -71,10 +71,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   toggleLanguage(currentLang: 'en' | 'ar'): void {
     const next = currentLang === 'en' ? 'ar' : 'en';
     this._store.dispatch(languageAction({ lang: next }));
+    this.clodeSidebar();
   }
 
   toggleTheme(): void {
     this._theme.toggleTheme();
+    this.clodeSidebar();
   }
 
   clodeSidebar() {

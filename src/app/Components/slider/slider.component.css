@@ -71,3 +71,12 @@
   display: flex !important;
   align-items: center;
 }
+@media (max-width: 768px) {
+  ::ng-deep .owl-prev {
+    left: 0px;
+  }
+
+  ::ng-deep .owl-next {
+    right: 0px;
+  }
+}

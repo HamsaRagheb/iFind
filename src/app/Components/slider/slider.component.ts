@@ -94,18 +94,18 @@ export class SliderComponent implements OnInit, OnDestroy {
   customOptions: OwlOptions = this.buildOptions(false);
 
   ngOnInit(): void {
+    let isFirst = true;
+
     this._langSubscription = this._store.select(selectLanguage).subscribe({
       next: (lang) => {
         const isRtl = lang === 'ar';
-
-        // New object reference so [options] actually triggers ngOnChanges
-        // on <owl-carousel-o> (mutating the existing object wouldn't).
         this.customOptions = this.buildOptions(isRtl);
 
-        // Briefly remove the carousel from the DOM, then re-add it on the
-        // next macrotask. This guarantees Owl's previous instance is fully
-        // destroyed (no leftover transform/width state) before it
-        // reinitializes against the new dir="rtl"/"ltr" layout.
+        if (isFirst) {
+          isFirst = false;
+          return;
+        }
+
         this.showCarousel = false;
         setTimeout(() => {
           this.showCarousel = true;

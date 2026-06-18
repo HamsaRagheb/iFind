@@ -117,6 +117,34 @@
   background: white;
 }
 
+@media screen and (max-width: 991px) {
+  .home {
+    height: calc(100vh - 190px);
+  }
+}
+@media (max-width: 768px) {
+  .bg-slide {
+    background-position: center right;
+  }
+  .home-overlay {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+  }
+
+  .home-title {
+    text-align: center;
+    font-size: 37px;
+  }
+  .home-subtitle {
+    font-size: 22px;
+  }
+  .home-btn {
+    display: block;
+    margin: 0 auto;
+  }
+}
 @keyframes kenBurns {
   from {
     transform: scale(1.15) translateX(-3%);
@@ -124,11 +152,5 @@
 
   to {
     transform: scale(1) translateX(0%);
-  }
-}
-
-@media screen and (max-width: 991px) {
-  .home {
-    height: calc(100vh - 190px);
   }
 }
