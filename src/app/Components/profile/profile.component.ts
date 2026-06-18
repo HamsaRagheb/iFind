@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { VerifyTokenResponse } from '../../Models/auth.model';
 import { AuthService } from '../../Services/auth.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -19,6 +18,7 @@ export class ProfileComponent {
     this.user = this._auth.decodeToken();
     this.userEmail = localStorage.getItem('userEmail');
   }
-
-  ngOnDestroy() {}
+  logout() {
+    this._auth.logout();
+  }
 }

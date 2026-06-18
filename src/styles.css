@@ -25,11 +25,17 @@
 }
 
 body {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: Arial, sans-serif;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+  -moz-transition: background-color 0.3s ease, color 0.3s ease;
+  -ms-transition: background-color 0.3s ease, color 0.3s ease;
+  -o-transition: background-color 0.3s ease, color 0.3s ease;
 }
 body.spinner-active {
   overflow: hidden;
