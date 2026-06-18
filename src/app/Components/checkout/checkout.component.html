@@ -1,8 +1,8 @@
 <div class="checkout-page py-5">
   <div class="container">
     <div class="checkout-header mb-5">
-      <h2 class="fw-bold">Checkout</h2>
-      <p class="mb-0">Complete your order securely</p>
+      <h2 class="fw-bold">{{ "CHECKOUT.TITLE" | translate }}</h2>
+      <p class="mb-0">{{ "CHECKOUT.SUBTITLE" | translate }}</p>
     </div>
 
     <div class="row g-4">
@@ -12,13 +12,16 @@
           <!-- Contact -->
           <div class="section">
             <div class="d-flex justify-content-between align-items-center mb-3">
-              <h5 class="section-title">Contact</h5>
+              <h5 class="section-title">
+                {{ "CHECKOUT.CONTACT" | translate }}
+              </h5>
             </div>
 
             <input
               type="email"
               class="form-control mb-3"
-              placeholder="Email or mobile phone number"
+              [placeholder]="'CHECKOUT.EMAIL_PLACEHOLDER' | translate"
+              aria-label="Checkout"
             />
 
             <div class="form-check">
@@ -27,25 +30,22 @@
                 class="form-check-input"
                 type="checkbox"
               />
-
-              <label class="form-check-label">
-                Email me with news and offers
-              </label>
+              <label class="form-check-label">{{
+                "CHECKOUT.EMAIL_OFFERS" | translate
+              }}</label>
             </div>
           </div>
 
           <!-- Delivery -->
           <div class="section">
-            <h5 class="section-title">Delivery</h5>
+            <h5 class="section-title">{{ "CHECKOUT.DELIVERY" | translate }}</h5>
 
-            <select aria-label="Select Countery" class="form-select mb-3">
-              <option value="EG">Egypt</option>
-              <option value="SA">Saudi Arabia</option>
-              <option value="AE">United Arab Emirates</option>
-              <option value="QA">Qatar</option>
-              <option value="KW">Kuwait</option>
-              <option value="BH">Bahrain</option>
-              <option value="OM">Oman</option>
+            <select aria-label="Select Country" class="form-select mb-3">
+              @for (country of countries; track country.value) {
+                <option [value]="country.value">
+                  {{ country.key | translate }}
+                </option>
+              }
             </select>
 
             <div class="row g-3 mb-3">
@@ -53,15 +53,16 @@
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="First name"
+                  [placeholder]="'CHECKOUT.FIRST_NAME' | translate"
+                  aria-label="Checkout"
                 />
               </div>
-
               <div class="col-md-6">
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Last name"
+                  [placeholder]="'CHECKOUT.LAST_NAME' | translate"
+                  aria-label="Checkout"
                 />
               </div>
             </div>
@@ -69,31 +70,36 @@
             <input
               type="text"
               class="form-control mb-3"
-              placeholder="Address"
+              [placeholder]="'CHECKOUT.ADDRESS' | translate"
+              aria-label="Checkout"
             />
-
             <input
               type="text"
               class="form-control mb-3"
-              placeholder="Apartment, suite, etc. (optional)"
+              [placeholder]="'CHECKOUT.APARTMENT' | translate"
+              aria-label="Checkout"
             />
 
             <div class="row g-3 mb-3">
               <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="City" />
+                <input
+                  type="text"
+                  class="form-control"
+                  [placeholder]="'CHECKOUT.CITY' | translate"
+                  aria-label="Checkout"
+                />
               </div>
-
               <div class="col-md-4">
                 <select aria-label="State" class="form-select">
-                  <option>State</option>
+                  <option>{{ "CHECKOUT.STATE" | translate }}</option>
                 </select>
               </div>
-
               <div class="col-md-4">
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="ZIP code"
+                  [placeholder]="'CHECKOUT.ZIP' | translate"
+                  aria-label="Checkout"
                 />
               </div>
             </div>
@@ -104,27 +110,26 @@
                 class="form-check-input"
                 type="checkbox"
               />
-
-              <label class="form-check-label">
-                Save this information for next time
-              </label>
+              <label class="form-check-label">{{
+                "CHECKOUT.SAVE_INFO" | translate
+              }}</label>
             </div>
           </div>
 
           <!-- Shipping -->
           <div class="section">
-            <h5 class="section-title">Shipping Method</h5>
-
+            <h5 class="section-title">
+              {{ "CHECKOUT.SHIPPING_METHOD" | translate }}
+            </h5>
             <div class="shipping-placeholder">
-              Enter your shipping address to view available shipping methods.
+              {{ "CHECKOUT.SHIPPING_PLACEHOLDER" | translate }}
             </div>
           </div>
 
           <!-- Payment -->
           <div class="section">
-            <h5 class="section-title">Payment</h5>
-
-            <p class="small">All transactions are secure and encrypted.</p>
+            <h5 class="section-title">{{ "CHECKOUT.PAYMENT" | translate }}</h5>
+            <p class="small">{{ "CHECKOUT.PAYMENT_SECURE" | translate }}</p>
 
             <div class="payment-card">
               <div class="payment-header">
@@ -136,29 +141,42 @@
                     type="radio"
                     name="payment"
                   />
-
-                  <label class="form-check-label fw-medium">
-                    Credit Card
-                  </label>
+                  <label class="form-check-label fw-medium">{{
+                    "CHECKOUT.CREDIT_CARD" | translate
+                  }}</label>
                 </div>
-
-                <span class="payment-badge"> VISA </span>
+                <span class="payment-badge">VISA</span>
               </div>
 
               <div class="payment-body">
-                <input class="form-control mb-3" placeholder="Card number" />
+                <input
+                  class="form-control mb-3"
+                  [placeholder]="'CHECKOUT.CARD_NUMBER' | translate"
+                  aria-label="Checkout"
+                />
 
                 <div class="row g-3 mb-3">
                   <div class="col-md-6">
-                    <input class="form-control" placeholder="MM / YY" />
+                    <input
+                      class="form-control"
+                      [placeholder]="'CHECKOUT.CARD_EXPIRY' | translate"
+                      aria-label="Checkout"
+                    />
                   </div>
-
                   <div class="col-md-6">
-                    <input class="form-control" placeholder="CVV" />
+                    <input
+                      class="form-control"
+                      [placeholder]="'CHECKOUT.CARD_CVV' | translate"
+                      aria-label="Checkout"
+                    />
                   </div>
                 </div>
 
-                <input class="form-control mb-3" placeholder="Name on card" />
+                <input
+                  class="form-control mb-3"
+                  [placeholder]="'CHECKOUT.CARD_NAME' | translate"
+                  aria-label="Checkout Name"
+                />
 
                 <div class="form-check">
                   <input
@@ -167,10 +185,9 @@
                     class="form-check-input"
                     type="checkbox"
                   />
-
-                  <label class="form-check-label">
-                    Use shipping address as billing address
-                  </label>
+                  <label class="form-check-label">{{
+                    "CHECKOUT.BILLING_SAME" | translate
+                  }}</label>
                 </div>
               </div>
 
@@ -182,14 +199,15 @@
                     type="radio"
                     name="payment"
                   />
-
-                  <label class="form-check-label"> Cash On Delivery </label>
+                  <label class="form-check-label">{{
+                    "CHECKOUT.COD" | translate
+                  }}</label>
                 </div>
               </div>
             </div>
 
             <button (click)="nextStep()" class="btn checkout-btn w-100 mt-4">
-              Pay Now
+              {{ "CHECKOUT.PAY_NOW" | translate }}
             </button>
           </div>
         </div>
@@ -198,43 +216,37 @@
       <!-- RIGHT -->
       <div class="col-lg-5">
         <div class="order-summary">
-          <h5 class="section-title mb-4">Order Summary</h5>
+          <h5 class="section-title mb-4">
+            {{ "CHECKOUT.ORDER_SUMMARY" | translate }}
+          </h5>
 
           <div *ngFor="let item of cartProducts" class="product-item">
             <div class="product-left">
               <div class="product-image">
                 <img [src]="item.product.imageCover" alt="item-img" />
-
-                <span class="quantity-badge">
-                  {{ item.count }}
-                </span>
+                <span class="quantity-badge">{{ item.count }}</span>
               </div>
-
               <div>
-                <h6 class="mb-1">
-                  {{ item.product.title }}
-                </h6>
+                <h6 class="mb-1">{{ item.product.title }}</h6>
               </div>
             </div>
-
             <div class="price">
               {{ item.price * item.count | currency: "USD" }}
             </div>
           </div>
         </div>
+
         <div class="all-price">
           <div class="summary-row">
-            <span>Subtotal</span>
+            <span>{{ "CHECKOUT.SUBTOTAL" | translate }}</span>
             <span>{{ totalPrice | currency: "USD" }}</span>
           </div>
-
           <div class="summary-row">
-            <span>Shipping</span>
-            <span>Free</span>
+            <span>{{ "CHECKOUT.SHIPPING" | translate }}</span>
+            <span>{{ "CHECKOUT.SHIPPING_FREE" | translate }}</span>
           </div>
-
           <div class="summary-row total">
-            <span>Total</span>
+            <span>{{ "CHECKOUT.TOTAL" | translate }}</span>
             <span>{{ totalPrice | currency: "USD" }}</span>
           </div>
         </div>

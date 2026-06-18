@@ -41,33 +41,114 @@
     "COPYRIGHT": "© 2026 iFind. جميع الحقوق محفوظة."
   },
   "SLIDER": {
-  "TITLE": "اكتشف مجموعاتنا المختارة",
-  "MACBOOK_PCS":    "ماك بوك / حواسيب",
-  "CASUAL_SHIRTS":  "قمصان كاجوال",
-  "LAPTOP":         "لابتوب",
-  "FLORAL_DRESSES": "فساتين زهرية",
-  "WOMENS_SHIRTS":  "قمصان نسائية",
-  "TV_LCD":         "تلفزيون وشاشات",
-  "WOMENS_DRESSES": "فساتين نسائية",
-  "MENS_APPAREL":   "ملابس رجالية",
-  "HANDSFREE":      "سماعة هاندزفري",
-  "JOYSTICKS":      "جويستيك",
-  "EARBUDS":        "سماعات لاسلكية",
-  "CASUAL_SHOES":   "أحذية كاجوال",
-  "COTTON_SOCKS":   "جوارب قطنية"
+    "TITLE": "اكتشف مجموعاتنا المختارة",
+    "MACBOOK_PCS": "ماك بوك / حواسيب",
+    "CASUAL_SHIRTS": "قمصان كاجوال",
+    "LAPTOP": "لابتوب",
+    "FLORAL_DRESSES": "فساتين زهرية",
+    "WOMENS_SHIRTS": "قمصان نسائية",
+    "TV_LCD": "تلفزيون وشاشات",
+    "WOMENS_DRESSES": "فساتين نسائية",
+    "MENS_APPAREL": "ملابس رجالية",
+    "HANDSFREE": "سماعة هاندزفري",
+    "JOYSTICKS": "جويستيك",
+    "EARBUDS": "سماعات لاسلكية",
+    "CASUAL_SHOES": "أحذية كاجوال",
+    "COTTON_SOCKS": "جوارب قطنية"
   },
-  "WISHLIST EMPTY":{
+  "BANNER": {
+    "TITLE": "أفضل العروض تنتظرك"
+  },
+  "WISHLIST_EMPTY": {
     "TITLE": "قائمة المفضلة فارغة",
     "TEXT": "احفظ منتجاتك المفضلة لتتمكن من العثور عليها بسهولة لاحقًا.",
     "SHOP": "استكشف المنتجات"
   },
-  "CART EMPTY":{
+  "CART_EMPTY": {
     "TITLE": "سلة التسوق فارغة",
     "TEXT": "يبدو أنك لم تضف أي منتجات إلى سلة التسوق بعد.",
     "SHOP": "ابدأ التسوق"
   },
-  "BANNER":{
-    "TITLE": "أفضل العروض تنتظرك"
+  "CART": {
+    "TABLE": {
+      "PRODUCT": "المنتج",
+      "QUANTITY": "الكمية",
+      "SUBTOTAL": "المجموع",
+      "REMOVE": "حذف"
+    },
+    "CONTINUE_SHOPPING": "مواصلة التسوق",
+    "DELETE_ALL": "حذف الكل",
+    "ORDER_NOTE_TITLE": "أضف ملاحظة للطلب",
+    "ORDER_NOTE_PLACEHOLDER": "كيف يمكننا مساعدتك؟",
+    "ORDER_NOTE_PATTERN_ERROR": "يُسمح فقط بالأحرف والأرقام وعلامات الترقيم الأساسية.",
+    "ORDER_NOTE_MAX_ERROR": "لا يمكن أن تتجاوز الملاحظة 200 حرف",
+    "SUBMIT": "إرسال",
+    "FREE_SHIPPING": "تهانينا! لقد حصلت على شحن مجاني!",
+    "CART_TOTALS": "إجمالي السلة",
+    "SUBTOTAL": "المجموع الجزئي",
+    "ESTIMATE_SHIPPING": "تقدير تكاليف الشحن:",
+    "COUNTRY_LABEL": "الدولة",
+    "REGION_LABEL": "المنطقة",
+    "REGION_OPTION": "أوكلاند",
+    "ZIP_LABEL": "الرمز البريدي",
+    "ZIP_PLACEHOLDER": "الرمز البريدي",
+    "COUPON_TITLE": "كوبون الخصم",
+    "COUPON_TEXT": "سيتم تطبيق كود الكوبون في صفحة الدفع.",
+    "COUPON_PLACEHOLDER": "كود الكوبون",
+    "YOU_SAVE": "إجمالي توفيرك",
+    "ORDER_DETAILS": "تفاصيل الطلب",
+    "AGREE": "أوافق على الشروط والأحكام",
+    "CHECKOUT": "إتمام الشراء",
+    "COUNTRIES": {
+      "EG": "مصر",
+      "SA": "المملكة العربية السعودية",
+      "AE": "الإمارات العربية المتحدة",
+      "QA": "قطر",
+      "KW": "الكويت",
+      "BH": "البحرين",
+      "OM": "عُمان"
+    }
+  },
+  "CHECKOUT": {
+  "TITLE": "إتمام الشراء",
+  "SUBTITLE": "أكمل طلبك بأمان",
+  "CONTACT": "التواصل",
+  "EMAIL_PLACEHOLDER": "البريد الإلكتروني أو رقم الهاتف",
+  "EMAIL_OFFERS": "أرسل لي أخبارًا وعروضًا عبر البريد الإلكتروني",
+  "DELIVERY": "التوصيل",
+  "FIRST_NAME": "الاسم الأول",
+  "LAST_NAME": "اسم العائلة",
+  "ADDRESS": "العنوان",
+  "APARTMENT": "الشقة أو الجناح وغيره (اختياري)",
+  "CITY": "المدينة",
+  "STATE": "المحافظة",
+  "ZIP": "الرمز البريدي",
+  "SAVE_INFO": "احفظ هذه المعلومات للمرة القادمة",
+  "SHIPPING_METHOD": "طريقة الشحن",
+  "SHIPPING_PLACEHOLDER": "أدخل عنوان الشحن لعرض طرق الشحن المتاحة.",
+  "PAYMENT": "الدفع",
+  "PAYMENT_SECURE": "جميع المعاملات آمنة ومشفرة.",
+  "CREDIT_CARD": "بطاقة ائتمان",
+  "CARD_NUMBER": "رقم البطاقة",
+  "CARD_EXPIRY": "الشهر / السنة",
+  "CARD_CVV": "CVV",
+  "CARD_NAME": "الاسم على البطاقة",
+  "BILLING_SAME": "استخدام عنوان الشحن كعنوان الفواتير",
+  "COD": "الدفع عند الاستلام",
+  "PAY_NOW": "ادفع الآن",
+  "ORDER_SUMMARY": "ملخص الطلب",
+  "SUBTOTAL": "المجموع الجزئي",
+  "SHIPPING": "الشحن",
+  "SHIPPING_FREE": "مجاني",
+  "TOTAL": "الإجمالي",
+  "COUNTRIES": {
+    "EG": "مصر",
+    "SA": "المملكة العربية السعودية",
+    "AE": "الإمارات العربية المتحدة",
+    "QA": "قطر",
+    "KW": "الكويت",
+    "BH": "البحرين",
+    "OM": "عُمان"
   }
-
+}
 }

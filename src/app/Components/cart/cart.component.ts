@@ -29,13 +29,22 @@ import { Subscription } from 'rxjs';
 export class CartComponent {
   private cartSub!: Subscription;
   cartProducts?: CartResponse;
+  totalCartPrice: number = 0;
   updateQuantityReuest: any;
 
   orderNote = new FormControl('', [
     Validators.maxLength(30),
     Validators.pattern(/^[a-zA-Z0-9 .,'\-\n]*$/),
   ]);
-
+  countries = [
+    { value: 'EG', key: 'CART.COUNTRIES.EG' },
+    { value: 'SA', key: 'CART.COUNTRIES.SA' },
+    { value: 'AE', key: 'CART.COUNTRIES.AE' },
+    { value: 'QA', key: 'CART.COUNTRIES.QA' },
+    { value: 'KW', key: 'CART.COUNTRIES.KW' },
+    { value: 'BH', key: 'CART.COUNTRIES.BH' },
+    { value: 'OM', key: 'CART.COUNTRIES.OM' },
+  ];
   constructor(
     private _cartService: CartService,
     private _sweetAlert: SweetAlertService,
@@ -44,8 +53,8 @@ export class CartComponent {
   ngOnInit() {
     this.cartSub = this._cartService.getUserCart().subscribe({
       next: (res) => {
-        console.log(res);
         this.cartProducts = res;
+        this.totalCartPrice = res.data.totalCartPrice;
       },
     });
   }

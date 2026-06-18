@@ -41,32 +41,114 @@
     "COPYRIGHT": "© 2026 iFind. All Rights Reserved."
   },
   "SLIDER": {
-  "TITLE": "Discover Our Collections",
-  "MACBOOK_PCS":    "MacBook / PCs",
-  "CASUAL_SHIRTS":  "Casual Shirts",
-  "LAPTOP":         "Laptop",
-  "FLORAL_DRESSES": "Floral Dresses",
-  "WOMENS_SHIRTS":  "Women's Shirts",
-  "TV_LCD":         "TV & LCD",
-  "WOMENS_DRESSES": "Women's Dresses",
-  "MENS_APPAREL":   "Men's Apparel",
-  "HANDSFREE":      "Handsfree",
-  "JOYSTICKS":      "Joysticks",
-  "EARBUDS":        "Earbuds",
-  "CASUAL_SHOES":   "Casual Shoes",
-  "COTTON_SOCKS":   "Cotton Socks"
+    "TITLE": "Discover Our Collections",
+    "MACBOOK_PCS": "MacBook / PCs",
+    "CASUAL_SHIRTS": "Casual Shirts",
+    "LAPTOP": "Laptop",
+    "FLORAL_DRESSES": "Floral Dresses",
+    "WOMENS_SHIRTS": "Women's Shirts",
+    "TV_LCD": "TV & LCD",
+    "WOMENS_DRESSES": "Women's Dresses",
+    "MENS_APPAREL": "Men's Apparel",
+    "HANDSFREE": "Handsfree",
+    "JOYSTICKS": "Joysticks",
+    "EARBUDS": "Earbuds",
+    "CASUAL_SHOES": "Casual Shoes",
+    "COTTON_SOCKS": "Cotton Socks"
   },
-  "WISHLIST EMPTY":{
+  "BANNER": {
+    "TITLE": "Great Deals Are Waiting for You"
+  },
+  "WISHLIST_EMPTY": {
     "TITLE": "Your wishlist is empty",
     "TEXT": "Save your favorite products to find them easily later.",
     "SHOP": "Explore Products"
   },
-  "CART EMPTY":{
+  "CART_EMPTY": {
     "TITLE": "Your cart is empty",
     "TEXT": "Looks like you haven't added anything yet.",
     "SHOP": "Start Shopping"
   },
-  "BANNER":{
-    "TITLE": "Great Deals Are Waiting for You"
+  "CART": {
+    "TABLE": {
+      "PRODUCT": "Product",
+      "QUANTITY": "Quantity",
+      "SUBTOTAL": "Subtotal",
+      "REMOVE": "Remove"
+    },
+    "CONTINUE_SHOPPING": "Continue Shopping",
+    "DELETE_ALL": "Delete All",
+    "ORDER_NOTE_TITLE": "Add Order Note",
+    "ORDER_NOTE_PLACEHOLDER": "How can we help you?",
+    "ORDER_NOTE_PATTERN_ERROR": "Only letters, numbers, and basic punctuation are allowed.",
+    "ORDER_NOTE_MAX_ERROR": "Note cannot exceed 200 characters",
+    "SUBMIT": "Submit",
+    "FREE_SHIPPING": "Congratulations! You've got free shipping!",
+    "CART_TOTALS": "Cart totals",
+    "SUBTOTAL": "Subtotal",
+    "ESTIMATE_SHIPPING": "Estimate shipping rates:",
+    "COUNTRY_LABEL": "Country",
+    "REGION_LABEL": "Region",
+    "REGION_OPTION": "Auckland",
+    "ZIP_LABEL": "Zip/Postal Code",
+    "ZIP_PLACEHOLDER": "Zip/Postal Code",
+    "COUPON_TITLE": "Coupon",
+    "COUPON_TEXT": "Coupon code will work on checkout page.",
+    "COUPON_PLACEHOLDER": "Coupon code",
+    "YOU_SAVE": "You save in total",
+    "ORDER_DETAILS": "Order Details",
+    "AGREE": "I agree with Terms & Conditions",
+    "CHECKOUT": "Check Out",
+    "COUNTRIES": {
+      "EG": "Egypt",
+      "SA": "Saudi Arabia",
+      "AE": "United Arab Emirates",
+      "QA": "Qatar",
+      "KW": "Kuwait",
+      "BH": "Bahrain",
+      "OM": "Oman"
+    }
+  },
+  "CHECKOUT": {
+  "TITLE": "Checkout",
+  "SUBTITLE": "Complete your order securely",
+  "CONTACT": "Contact",
+  "EMAIL_PLACEHOLDER": "Email or mobile phone number",
+  "EMAIL_OFFERS": "Email me with news and offers",
+  "DELIVERY": "Delivery",
+  "FIRST_NAME": "First name",
+  "LAST_NAME": "Last name",
+  "ADDRESS": "Address",
+  "APARTMENT": "Apartment, suite, etc. (optional)",
+  "CITY": "City",
+  "STATE": "State",
+  "ZIP": "ZIP code",
+  "SAVE_INFO": "Save this information for next time",
+  "SHIPPING_METHOD": "Shipping Method",
+  "SHIPPING_PLACEHOLDER": "Enter your shipping address to view available shipping methods.",
+  "PAYMENT": "Payment",
+  "PAYMENT_SECURE": "All transactions are secure and encrypted.",
+  "CREDIT_CARD": "Credit Card",
+  "CARD_NUMBER": "Card number",
+  "CARD_EXPIRY": "MM / YY",
+  "CARD_CVV": "CVV",
+  "CARD_NAME": "Name on card",
+  "BILLING_SAME": "Use shipping address as billing address",
+  "COD": "Cash On Delivery",
+  "PAY_NOW": "Pay Now",
+  "ORDER_SUMMARY": "Order Summary",
+  "SUBTOTAL": "Subtotal",
+  "SHIPPING": "Shipping",
+  "SHIPPING_FREE": "Free",
+  "TOTAL": "Total",
+  "COUNTRIES": {
+    "EG": "Egypt",
+    "SA": "Saudi Arabia",
+    "AE": "United Arab Emirates",
+    "QA": "Qatar",
+    "KW": "Kuwait",
+    "BH": "Bahrain",
+    "OM": "Oman"
   }
+}
 }

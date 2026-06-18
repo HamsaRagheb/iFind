@@ -12,10 +12,10 @@
               <table class="table align-middle cart-table">
                 <thead>
                   <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Subtotal:</th>
-                    <th>Remove</th>
+                    <th>{{ "CART.TABLE.PRODUCT" | translate }}</th>
+                    <th>{{ "CART.TABLE.QUANTITY" | translate }}</th>
+                    <th>{{ "CART.TABLE.SUBTOTAL" | translate }}</th>
+                    <th>{{ "CART.TABLE.REMOVE" | translate }}</th>
                   </tr>
                 </thead>
 
@@ -34,12 +34,10 @@
                               alt="product"
                             />
                           </div>
-
                           <div>
                             <h6 class="product-title mb-1">
                               {{ item.product.title }}
                             </h6>
-
                             <div class="price">
                               {{ item.price | currency: "USD" }}
                             </div>
@@ -89,41 +87,40 @@
             <!-- Buttons -->
             <div class="cart-buttons">
               <button routerLink="/home" class="shop-btn">
-                Continue Shopping
+                {{ "CART.CONTINUE_SHOPPING" | translate }}
               </button>
-
               <button (click)="clearAllItems()" class="delete-all-btn">
-                Delete All
+                {{ "CART.DELETE_ALL" | translate }}
               </button>
             </div>
           </div>
 
           <!-- Order Note -->
           <div class="order-note mt-4">
-            <h6 class="mb-3">Add Order Note</h6>
+            <h6 class="mb-3">{{ "CART.ORDER_NOTE_TITLE" | translate }}</h6>
 
             <textarea
               [formControl]="orderNote"
               class="form-control"
               rows="6"
-              placeholder="How can we help you?"
+              [placeholder]="'CART.ORDER_NOTE_PLACEHOLDER' | translate"
+              aria-label="Order Note"
             ></textarea>
+
             @if (orderNote.touched && orderNote.invalid) {
               <div class="text-danger mt-3">
                 @if (orderNote.getError("pattern")) {
-                  <p>
-                    Only letters, numbers, and basic punctuation are allowed.
-                  </p>
+                  <p>{{ "CART.ORDER_NOTE_PATTERN_ERROR" | translate }}</p>
                 }
                 @if (orderNote.getError("maxlength")) {
-                  <p>Note cannot exceed 200 characters</p>
+                  <p>{{ "CART.ORDER_NOTE_MAX_ERROR" | translate }}</p>
                 }
               </div>
             }
 
             <div class="text-end mt-3">
               <button (click)="onSubmitNote()" class="note-btn" type="submit">
-                Submit
+                {{ "CART.SUBMIT" | translate }}
               </button>
             </div>
           </div>
@@ -136,83 +133,90 @@
               <div class="shipping-bar-wrapper">
                 <div class="shipping-bar">
                   <div class="shipping-truck">
-                    <i class="fa-solid fa-truck-fast"></i>
+                    <i class="fa-solid fa-truck"></i>
                   </div>
                 </div>
               </div>
               <p class="shipping-label">
-                Congratulations! You've got free shipping!
+                {{ "CART.FREE_SHIPPING" | translate }}
               </p>
             </div>
 
-            <h5 class="summary-title">Cart totals</h5>
+            <h5 class="summary-title">{{ "CART.CART_TOTALS" | translate }}</h5>
 
             <div class="summary-row">
-              <span>Subtotal</span>
-              <strong>Rs.59,800.00</strong>
+              <span>{{ "CART.SUBTOTAL" | translate }}</span>
+              <strong>{{ totalCartPrice | currency: "USD" }}</strong>
             </div>
 
             <hr />
 
-            <h6 class="mb-3">Estimate shipping rates:</h6>
+            <h6 class="mb-3">{{ "CART.ESTIMATE_SHIPPING" | translate }}</h6>
 
             <div class="mb-3">
-              <label class="form-label">Country</label>
-
-              <select aria-label="Select-Country" class="form-select">
-                <option>New Zealand</option>
+              <label class="form-label">{{
+                "CART.COUNTRY_LABEL" | translate
+              }}</label>
+              <select aria-label="Select Country" class="form-select mb-3">
+                @for (country of countries; track country.value) {
+                  <option [value]="country.value">
+                    {{ country.key | translate }}
+                  </option>
+                }
               </select>
             </div>
 
             <div class="mb-3">
-              <label class="form-label">Region</label>
-
+              <label class="form-label">{{
+                "CART.REGION_LABEL" | translate
+              }}</label>
               <select aria-label="Select Region" class="form-select">
-                <option>Auckland</option>
+                <option>{{ "CART.REGION_OPTION" | translate }}</option>
               </select>
             </div>
 
             <div class="mb-3">
-              <label class="form-label"> Zip/Postal Code </label>
-
+              <label class="form-label">{{
+                "CART.ZIP_LABEL" | translate
+              }}</label>
               <input
                 type="text"
                 class="form-control"
-                placeholder="Zip/Postal Code"
+                [placeholder]="'CART.ZIP_PLACEHOLDER' | translate"
+                aria-label="Order Note"
               />
             </div>
+
             <hr />
 
-            <h6>Coupon</h6>
-
-            <p class="coupon-text">Coupon code will work on checkout page.</p>
-
+            <h6>{{ "CART.COUPON_TITLE" | translate }}</h6>
+            <p class="coupon-text">{{ "CART.COUPON_TEXT" | translate }}</p>
             <input
               type="text"
               class="form-control mb-3"
-              placeholder="Coupon code"
+              [placeholder]="'CART.COUPON_PLACEHOLDER' | translate"
+              aria-label="Coupon"
             />
 
             <div class="summary-row">
-              <span>You save in total</span>
-              <strong>Rs.20,200.00</strong>
+              <span>{{ "CART.YOU_SAVE" | translate }}</span>
+              <strong>$50</strong>
             </div>
 
             <div class="summary-row total-price">
-              <span>Order Details</span>
-              <strong>Rs.59,800.00</strong>
+              <span>{{ "CART.ORDER_DETAILS" | translate }}</span>
+              <strong>{{ totalCartPrice | currency: "USD" }}</strong>
             </div>
 
             <div class="form-check my-3">
               <input class="form-check-input" type="checkbox" id="agree" />
-
               <label class="form-check-label" for="agree">
-                I agree with Terms & Conditions
+                {{ "CART.AGREE" | translate }}
               </label>
             </div>
 
             <button routerLink="/checkout" class="checkout-btn w-100">
-              Check Out
+              {{ "CART.CHECKOUT" | translate }}
             </button>
           </div>
         </div>
@@ -223,13 +227,10 @@
   <div class="container">
     <div class="empty-cart text-center py-5 my-5">
       <i class="fa-solid fa-cart-shopping fa-3x mb-3 empty-cart-icon"></i>
-
-      <h5 class="empty-cart-title">{{ "CART EMPTY.TITLE" | translate }}</h5>
-
-      <p class="empty-cart-text">{{ "CART EMPTY.TEXT" | translate }}</p>
-
+      <h5 class="empty-cart-title">{{ "CART_EMPTY.TITLE" | translate }}</h5>
+      <p class="empty-cart-text">{{ "CART_EMPTY.TEXT" | translate }}</p>
       <button routerLink="/search" class="shop-btn mt-2">
-        {{ "CART EMPTY.SHOP" | translate }}
+        {{ "CART_EMPTY.SHOP" | translate }}
       </button>
     </div>
   </div>

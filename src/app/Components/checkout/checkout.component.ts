@@ -4,10 +4,11 @@ import { CartProduct } from '../../Models/cart.model';
 import { Subscription } from 'rxjs';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { SweetAlertService } from '../../Services/sweet-alert.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-checkout',
-  imports: [CommonModule, CurrencyPipe],
+  imports: [CommonModule, CurrencyPipe, TranslatePipe],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css',
 })
@@ -17,6 +18,15 @@ export class CheckoutComponent {
   totalPrice: number = 0;
   private subscription!: Subscription;
 
+  countries = [
+    { value: 'EG', key: 'CHECKOUT.COUNTRIES.EG' },
+    { value: 'SA', key: 'CHECKOUT.COUNTRIES.SA' },
+    { value: 'AE', key: 'CHECKOUT.COUNTRIES.AE' },
+    { value: 'QA', key: 'CHECKOUT.COUNTRIES.QA' },
+    { value: 'KW', key: 'CHECKOUT.COUNTRIES.KW' },
+    { value: 'BH', key: 'CHECKOUT.COUNTRIES.BH' },
+    { value: 'OM', key: 'CHECKOUT.COUNTRIES.OM' },
+  ];
   constructor(
     private _cartService: CartService,
     private _sweetAlert: SweetAlertService,

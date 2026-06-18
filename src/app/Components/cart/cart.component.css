@@ -1,53 +1,6 @@
-/* cart.css */
-
-/* ── Page background ── */
 .cart {
   background: var(--bg-color);
   min-height: 100vh;
-}.shipping-bar-wrapper {
-  width: 100%;
-  background-color: var(--border-color);
-  border-radius: 999px;
-  height: 6px;
-  position: relative;
-  margin-bottom: 10px;
-}
-
-.shipping-bar {
-  height: 100%;
-  width: 85%;               /* how "full" the bar is */
-  background-color: #1a7a3c;
-  border-radius: 999px;
-  position: relative;
-  animation: fillBar 1.2s ease-out forwards;
-}
-
-.shipping-truck {
-  position: absolute;
-  right: -18px;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #1a7a3c;
-  color: white;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-
-@keyframes fillBar {
-  from { width: 0%; }
-  to   { width: 85%; }
-}
-
-.shipping-label {
-  font-size: 13px;
-  color: var(--soft-blue);
-  margin: 8px 0 0;
 }
 
 /* LEFT SIDE */
@@ -57,7 +10,6 @@
   border-radius: 8px;
 }
 
-/* ── Fix Bootstrap table overrides ── */
 .cart-wrapper .cart-table,
 .cart-wrapper .cart-table> :not(caption)>*>* {
   background-color: var(--card-bg) !important;
@@ -78,8 +30,6 @@
   padding: 25px 10px;
   color: var(--text-color);
 }
-
-/* ── Fix Bootstrap tr/tbody overrides ── */
 .cart-table tbody tr {
   background-color: var(--card-bg) !important;
   border-color: var(--border-color) !important;
@@ -202,6 +152,7 @@
   color: var(--text-color);
 }
 
+/* ── Shipping Bar ── */
 .shipping-bar-wrapper {
   width: 100%;
   background-color: var(--border-color);
@@ -214,17 +165,17 @@
 .shipping-bar {
   height: 100%;
   width: 0%;
-  /* start at 0 */
   background-color: var(--dark-blue);
   border-radius: 999px;
   position: relative;
-  transition: width 1.2s ease-out;
-  /* animate via transition, not keyframes */
+  animation: fillBar 1.2s ease-out forwards;
 }
+
 
 .shipping-truck {
   position: absolute;
   right: -18px;
+  left: auto;
   top: 50%;
   transform: translateY(-50%);
   background-color: var(--soft-pink);
@@ -239,11 +190,20 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-.shipping-label {
-  font-size: 13px;
-  color: var(--soft-blue);
-  margin: 8px 0 0;
+[dir='rtl'] .shipping-truck {
+  right: auto;
+  left: -18px;
 }
+
+[dir='rtl'] .shipping-truck i {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+[dir='rtl'] .shipping-bar {
+  animation: fillBarRtl 1.2s ease-out forwards;
+}
+
 
 .cart-summary hr {
   border-color: var(--border-color);
@@ -283,17 +243,14 @@
   font-size: 14px;
 }
 
-/* ── Fix Bootstrap form-label ── */
 .cart-summary .form-label {
   color: var(--text-color);
 }
 
-/* ── Fix Bootstrap form-check ── */
 .cart-summary .form-check-label {
   color: var(--text-color);
 }
 
-/* ── Override Bootstrap form-control / form-select fully ── */
 .cart-summary .form-control,
 .cart-summary .form-select,
 .order-note .form-control {
@@ -328,12 +285,10 @@
   opacity: 0.8;
   font-size: 25px;
 }
-/* ── Fix select dropdown arrow color in dark mode ── */
 [data-theme='dark'] .form-select {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23EEEEEE' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
 }
 
-/* ── Fix Bootstrap form-check-input ── */
 [data-theme='dark'] .form-check-input {
   background-color: var(--input-bg);
   border-color: var(--border-color);
@@ -343,5 +298,27 @@
   .cart-buttons {
     flex-direction: column;
     gap: 15px;
+  }
+}
+@keyframes fillBar {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 85%;
+  }
+}
+@keyframes fillBarRtl {
+  from {
+    width: 0%;
+    margin-right: auto;
+    margin-left: 0;
+  }
+
+  to {
+    width: 85%;
+    margin-right: auto;
+    margin-left: 0;
   }
 }
