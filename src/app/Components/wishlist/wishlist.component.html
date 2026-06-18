@@ -19,12 +19,16 @@
   <div class="empty-wishlist text-center py-5">
     <i class="fa-regular fa-heart fa-3x mb-3 empty-wishlist-icon"></i>
 
-    <h5 class="empty-wishlist-title">Your wishlist is empty</h5>
+    <h5 class="empty-wishlist-title">
+      {{ "WISHLIST EMPTY.TITLE" | translate }}
+    </h5>
 
     <p class="empty-wishlist-text">
-      Save your favorite products to find them easily later.
+      {{ "WISHLIST EMPTY.TEXT" | translate }}
     </p>
 
-    <button routerLink="/search" class="shop-btn mt-2">Explore Products</button>
+    <button routerLink="/search" class="shop-btn mt-2">
+      {{ "WISHLIST EMPTY.SHOP" | translate }}
+    </button>
   </div>
 }

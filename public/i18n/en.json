@@ -55,5 +55,18 @@
   "EARBUDS":        "Earbuds",
   "CASUAL_SHOES":   "Casual Shoes",
   "COTTON_SOCKS":   "Cotton Socks"
-}
+  },
+  "WISHLIST EMPTY":{
+    "TITLE": "Your wishlist is empty",
+    "TEXT": "Save your favorite products to find them easily later.",
+    "SHOP": "Explore Products"
+  },
+  "CART EMPTY":{
+    "TITLE": "Your cart is empty",
+    "TEXT": "Looks like you haven't added anything yet.",
+    "SHOP": "Start Shopping"
+  },
+  "BANNER":{
+    "TITLE": "Great Deals Are Waiting for You"
+  }
 }

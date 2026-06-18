@@ -11,14 +11,23 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
-  imports: [CommonModule, RouterLink, BannerComponent, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterLink,
+    BannerComponent,
+    ReactiveFormsModule,
+    TranslatePipe,
+  ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
 })
 export class CartComponent {
+  private cartSub!: Subscription;
   cartProducts?: CartResponse;
   updateQuantityReuest: any;
 
@@ -33,7 +42,7 @@ export class CartComponent {
   ) {}
 
   ngOnInit() {
-    this._cartService.getUserCart().subscribe({
+    this.cartSub = this._cartService.getUserCart().subscribe({
       next: (res) => {
         console.log(res);
         this.cartProducts = res;
@@ -118,5 +127,9 @@ export class CartComponent {
       'Your note has been submitted successfully.',
     );
     this.orderNote.reset();
+  }
+
+  ngOnDestroy() {
+    this.cartSub.unsubscribe();
   }
 }

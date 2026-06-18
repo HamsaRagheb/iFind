@@ -133,8 +133,16 @@
         <div class="col-lg-4">
           <div class="cart-summary">
             <div class="free-shipping">
-              <i class="fa-solid fa-circle-check"></i>
-              Congratulations! You've got free shipping!
+              <div class="shipping-bar-wrapper">
+                <div class="shipping-bar">
+                  <div class="shipping-truck">
+                    <i class="fa-solid fa-truck-fast"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="shipping-label">
+                Congratulations! You've got free shipping!
+              </p>
             </div>
 
             <h5 class="summary-title">Cart totals</h5>
@@ -216,11 +224,13 @@
     <div class="empty-cart text-center py-5 my-5">
       <i class="fa-solid fa-cart-shopping fa-3x mb-3 empty-cart-icon"></i>
 
-      <h5 class="empty-cart-title">Your cart is empty</h5>
+      <h5 class="empty-cart-title">{{ "CART EMPTY.TITLE" | translate }}</h5>
 
-      <p class="empty-cart-text">Looks like you haven't added anything yet.</p>
+      <p class="empty-cart-text">{{ "CART EMPTY.TEXT" | translate }}</p>
 
-      <button routerLink="/search" class="shop-btn mt-2">Start Shopping</button>
+      <button routerLink="/search" class="shop-btn mt-2">
+        {{ "CART EMPTY.SHOP" | translate }}
+      </button>
     </div>
   </div>
 }

@@ -4,6 +4,50 @@
 .cart {
   background: var(--bg-color);
   min-height: 100vh;
+}.shipping-bar-wrapper {
+  width: 100%;
+  background-color: var(--border-color);
+  border-radius: 999px;
+  height: 6px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.shipping-bar {
+  height: 100%;
+  width: 85%;               /* how "full" the bar is */
+  background-color: #1a7a3c;
+  border-radius: 999px;
+  position: relative;
+  animation: fillBar 1.2s ease-out forwards;
+}
+
+.shipping-truck {
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #1a7a3c;
+  color: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+@keyframes fillBar {
+  from { width: 0%; }
+  to   { width: 85%; }
+}
+
+.shipping-label {
+  font-size: 13px;
+  color: var(--soft-blue);
+  margin: 8px 0 0;
 }
 
 /* LEFT SIDE */
@@ -158,7 +202,49 @@
   color: var(--text-color);
 }
 
-/* ── Fix Bootstrap hr ── */
+.shipping-bar-wrapper {
+  width: 100%;
+  background-color: var(--border-color);
+  border-radius: 999px;
+  height: 6px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.shipping-bar {
+  height: 100%;
+  width: 0%;
+  /* start at 0 */
+  background-color: var(--dark-blue);
+  border-radius: 999px;
+  position: relative;
+  transition: width 1.2s ease-out;
+  /* animate via transition, not keyframes */
+}
+
+.shipping-truck {
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--soft-pink);
+  color: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.shipping-label {
+  font-size: 13px;
+  color: var(--soft-blue);
+  margin: 8px 0 0;
+}
+
 .cart-summary hr {
   border-color: var(--border-color);
   opacity: 1;

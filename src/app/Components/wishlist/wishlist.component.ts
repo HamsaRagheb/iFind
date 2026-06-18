@@ -8,11 +8,18 @@ import { ProductComponent } from '../Shared/product/product.component';
 import { WishlistService } from '../../Services/wishlist.service';
 import { BannerComponent } from '../Shared/banner/banner.component';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-wishlist',
   standalone: true,
-  imports: [CommonModule, ProductComponent, BannerComponent, RouterLink],
+  imports: [
+    CommonModule,
+    ProductComponent,
+    BannerComponent,
+    RouterLink,
+    TranslatePipe,
+  ],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.css',
 })
