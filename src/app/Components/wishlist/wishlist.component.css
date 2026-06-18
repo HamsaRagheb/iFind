@@ -1,0 +1,80 @@
+/* wishlist.component.css */
+
+.wishlist-page {
+  min-height: 100vh;
+  background: var(--bg-color);
+  padding: 40px 0;
+}
+
+.wishlist-header {
+  color: var(--text-color);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.wishlist-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  transition: 0.3s;
+}
+
+.wishlist-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist-card .product-title {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.wishlist-card .price {
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+.wishlist-card .remove-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.wishlist-card .remove-btn:hover {
+  opacity: 1;
+  color: red;
+}
+
+.empty-wishlist {
+  color: var(--text-color);
+  text-align: center;
+  padding: 60px 0;
+}
+.empty-wishlist-icon {
+  color: var(--text-color);
+}
+
+.empty-wishlist-title,
+.empty-wishlist-text {
+  color: var(--text-color);
+  font-size: 30px;
+}
+
+.empty-wishlist-text {
+  opacity: 0.8;
+  font-size: 25px;
+}
+.shop-btn{
+    border: none;
+    background: var(--dark-blue);
+    color: white;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.shop-btn:hover {
+  background-color: var(--soft-blue);
+}

@@ -1,0 +1,185 @@
+<!-- NAVBAR -->
+<nav class="custom-navbar navbar navbar-expand-lg shadow-lg">
+  <div class="container navbar-three-cols">
+    <!-- ── LEFT: Categories ── -->
+    <div class="navbar-left d-none d-lg-flex">
+      <button (click)="openCategorySidebar()" class="category-btn">
+        <i class="fa-solid fa-list-ul"></i>
+        {{ "NAV.SHOP_BY_CATEGORY" | translate }}
+      </button>
+    </div>
+
+    <!-- ── Nav Links ── -->
+    <div class="d-none d-lg-flex align-items-center">
+      <ul class="navbar-nav d-flex flex-row gap-2 mb-0">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/home"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <i class="fa-solid fa-house"></i> {{ "NAV.HOME" | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile" routerLinkActive="active">
+            <i class="fa-solid fa-user"></i> {{ "NAV.ACCOUNT" | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link position-relative"
+            routerLink="/wishlist"
+            routerLinkActive="active"
+          >
+            <span class="badge-count">{{ wishlistCount }}</span>
+            <i class="fa-solid fa-heart"></i> {{ "NAV.WISHLIST" | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link position-relative"
+            routerLink="/cart"
+            routerLinkActive="active"
+          >
+            <span class="badge-count">{{ cartCount }}</span>
+            <i class="fa-solid fa-cart-shopping"></i>
+            {{ "NAV.CART" | translate }}
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- MOBILE SIDEBAR -->
+    <div
+      #sidebar
+      class="offcanvas offcanvas-end mobile-sidebar d-lg-none"
+      tabindex="-1"
+      id="mobileSidebar"
+      aria-labelledby="mobileSidebarLabel"
+    >
+      <!-- Header -->
+      <div class="offcanvas-header p-3 d-flex justify-content-between">
+        <div class="sidebar-logo">
+          <img src="images/logo.png" alt="logo-img" />
+        </div>
+
+        <button
+          type="button"
+          class="sidebar-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="offcanvas-body">
+        <button (click)="openCategorySidebar()" class="category-card">
+          <div class="d-flex align-items-center gap-3">
+            <i class="fa-solid fa-list-ul"></i>
+            <span>{{ "NAV.SHOP_BY_CATEGORY" | translate }}</span>
+          </div>
+        </button>
+
+        <div class="sidebar-section">
+          <h6 class="sidebar-title">{{ "NAV.NAVIGATION" | translate }}</h6>
+          <ul class="sidebar-links">
+            <li>
+              <a
+                routerLink="/home"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="clodeSidebar()"
+                ><i class="fa-solid fa-house"></i>
+                {{ "NAV.HOME" | translate }}</a
+              >
+            </li>
+            <li>
+              <a
+                routerLink="/wishlist"
+                routerLinkActive="active"
+                (click)="clodeSidebar()"
+                class="with-badge"
+              >
+                <div>
+                  <i class="fa-solid fa-heart"></i>
+                  {{ "NAV.WISHLIST" | translate }}
+                </div>
+                <span class="menu-badge">{{ wishlistCount }}</span>
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/cart"
+                routerLinkActive="active"
+                (click)="clodeSidebar()"
+                class="with-badge"
+              >
+                <div>
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  {{ "NAV.CART" | translate }}
+                </div>
+                <span class="menu-badge">{{ cartCount }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <!-- Theme + Language in mobile sidebar -->
+        <div class="sidebar-section">
+          <h6 class="sidebar-title">{{ "NAV.SETTINGS" | translate }}</h6>
+          <div class="d-flex align-items-center gap-3 px-2">
+            <button (click)="toggleTheme()" class="btn theme-toggle-btn">
+              @if (_theme.currentTheme) {
+                <i class="fa-solid fa-sun"></i>
+              } @else {
+                <i class="fa-solid fa-moon"></i>
+              }
+            </button>
+            <div class="language">
+              @if (lang$ | async; as lang) {
+                <button class="btn language-btn" (click)="toggleLanguage(lang)">
+                  <i class="fa-solid fa-globe mx-1"></i>
+                  {{ lang === "en" ? "العربية" : "English" }}
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="sidebar-section">
+          <h6 class="sidebar-title">{{ "NAV.ACCOUNT" | translate }}</h6>
+          <ul class="sidebar-links">
+            <li>
+              <a
+                routerLink="/profile"
+                routerLinkActive="active"
+                (click)="clodeSidebar()"
+              >
+                <i class="fa-regular fa-user"></i>
+                {{ "NAV.MY_ACCOUNT" | translate }}
+              </a>
+            </li>
+
+            <li>
+              <a (click)="logout()" class="with-badge">
+                <div>
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  {{ "NAV.LOGOUT" | translate }}
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- END MOBILE SIDEBAR -->
+  </div>
+</nav>

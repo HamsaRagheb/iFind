@@ -1,0 +1,67 @@
+<div class="profile-page">
+  <!-- Top Banner -->
+  <section class="banner">
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+    <div class="circle c4"></div>
+  </section>
+
+  <div class="container">
+    <div class="profile-card">
+      <!-- Profile Image -->
+      <div class="avatar-wrapper">
+        <img src="images/user.png" alt="profile" class="avatar" />
+      </div>
+
+      <!-- Content -->
+
+      <div class="text-center">
+        <h2 class="profile-name">{{ user?.name }}</h2>
+
+        <div class="profile-info">
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+
+            <div class="info-content">
+              <span class="info-label">Role:</span>
+              <h6>{{ user?.role }}</h6>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+
+            <div class="info-content">
+              <span class="info-label">Email</span>
+              <h6 class="email">{{ userEmail }}</h6>
+            </div>
+          </div>
+        </div>
+
+        <button
+          routerLink="/home"
+          class="profile-btn mb-3 d-block text-center w-100"
+        >
+          Continue shopping
+        </button>
+        <button
+          routerLink="/changePassword"
+          class="profile-btn mb-3 d-block text-center w-100"
+        >
+          Update password
+        </button>
+        <button
+          routerLink="/changePassword"
+          class="profile-btn mb-1 d-block text-center w-100"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

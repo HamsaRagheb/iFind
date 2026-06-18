@@ -1,0 +1,149 @@
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  cursor: url('/images/xmark-solid.png') , auto;
+  animation: fadeIn 0.3s ease;
+  -webkit-animation: fadeIn 0.3s ease;
+}
+
+/* Popup box */
+.popup {
+  position: relative;
+  width: 660px;
+  max-width: 95vw;
+  min-height: 440px;
+  border-radius: 16px;
+  background-image: url('/images/ad.png');
+  background-size: cover;
+  background-position: center right;
+  transform: translateY(100px);
+  animation: slideUp 0.35s ease;
+  -webkit-transform: translateY(100px);
+  -moz-transform: translateY(100px);
+  -ms-transform: translateY(100px);
+  -o-transform: translateY(100px);
+}
+
+.popup-content {
+  width: 55%;
+  min-height: 440px;
+  padding: 56px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+
+  background: linear-gradient(to right,
+      rgba(245, 238, 228, 0.97) 45%,
+      rgba(245, 238, 228, 0.0) 100%);
+}
+
+/* Close button */
+.close-btn {
+  top: -45px;
+  right: -25px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #1a2e5a;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.2s;
+}
+
+.close-btn:hover {
+  background: var(--soft-pink);
+  color: var(--dark-blue);
+}
+.close-btn i {
+  transition: transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  -moz-transition: transform 0.2s;
+  -ms-transition: transform 0.2s;
+  -o-transition: transform 0.2s;
+}
+.close-btn:hover i{
+  transform: rotate(-360deg);
+  -webkit-transform: rotate(-360deg);
+  -moz-transform: rotate(-360deg);
+  -ms-transform: rotate(-360deg);
+  -o-transform: rotate(-360deg);
+}
+/* Sub heading */
+.sub-heading {
+  font-size: 0.78rem;
+  letter-spacing: 3px;
+  color: #1a2e5a;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Main heading */
+.main-heading {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #1a2e5a;
+  margin: 0;
+  line-height: 1.1;
+}
+
+/* Description */
+.description {
+  font-size: 0.97rem;
+  color: #444;
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* CTA button */
+.shop-btn {
+  margin-top: 8px;
+  padding: 14px 32px;
+  background: #1a2e5a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: fit-content;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.shop-btn:hover {
+  background: var(--soft-pink);
+  color: var(--dark-blue);
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

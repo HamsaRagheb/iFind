@@ -1,0 +1,131 @@
+<!-- MAIN HEADER -->
+<header class="main-header my-0 py-1">
+  <div class="container">
+    <div class="row align-items-center justify-content-between flex-nowrap">
+      <!------------------------------ MOBILE --------------------------->
+      <!-- MOBILE / TABLET HEADER -->
+      <div class="mobile-header d-lg-none my-0">
+        <!-- Top Row -->
+        <div class="mobile-top">
+          <div class="logo">
+            <img
+              class="img-fluid my-auto"
+              src="images/logo.png"
+              alt="logo-img"
+            />
+          </div>
+
+          <div class="mobile-actions">
+            <div routerLink="/wishlist" class="action-item position-relative">
+              <span class="badge-count">{{ wishlistCount }}</span>
+              <i class="fa-solid fa-heart"></i>
+            </div>
+
+            <div routerLink="/cart" class="action-item position-relative">
+              <span class="badge-count">{{ cartCount }}</span>
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+
+            <button
+              class="menu-btn me-3"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#mobileSidebar"
+              aria-label="Toggle Menu"
+            >
+              <i class="fa-solid fa-bars"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Search -->
+        <div class="mobile-search mt-0 mx-auto">
+          <div class="search-row">
+            <input
+              #searchInputMobile
+              type="text"
+              class="form-control search-input"
+              [placeholder]="'HEADER.SEARCH_PLACEHOLDER_MOBILE' | translate"
+              (input)="onSearch($event)"
+              aria-label="Search"
+            />
+            <button
+              (click)="focuseSearchMobile()"
+              class="btn search-btn"
+              aria-label="Search"
+            >
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!------------------------------ DESKTOP --------------------------->
+      <!-- DESKTOP: Logo -->
+      <div
+        class="logo-div col-lg-2 col-xl-2 d-none d-lg-flex align-items-center my-lg-2"
+      >
+        <img src="images/logo.png" alt="logo-img" />
+      </div>
+
+      <!-- DESKTOP: Search -->
+      <div class="search col-lg-6 col-xl-7 d-none d-lg-block">
+        <div class="search-wrapper d-flex align-items-stretch">
+          <select
+            (change)="onCategoryChange($event)"
+            aria-label="Categories"
+            class="form-select category-select"
+          >
+            <option>{{ "HEADER.ALL_CATEGORIES" | translate }}</option>
+            <ng-container *ngFor="let category of categories">
+              <option>{{ category.name }}</option>
+            </ng-container>
+          </select>
+
+          <div class="d-flex flex-grow-1">
+            <input
+              #searchInputDesktop
+              type="text"
+              class="form-control search-input flex-grow-1"
+              [placeholder]="'HEADER.SEARCH_PLACEHOLDER' | translate"
+              (input)="onSearch($event)"
+              aria-label="Search"
+            />
+            <button
+              (click)="focuseSearchDesktop()"
+              aria-label="Search"
+              class="btn search-btn"
+            >
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESKTOP: Settings (theme + language + logout) -->
+      <div
+        class="col-lg-3 col-xl-3 d-none d-lg-flex justify-content-end align-items-center gap-3 my-lg-2"
+      >
+        <button (click)="toggleTheme()" class="btn theme-toggle-btn">
+          @if (_theme.currentTheme) {
+            <i class="fa-solid fa-sun"></i>
+          } @else {
+            <i class="fa-solid fa-moon"></i>
+          }
+        </button>
+
+        @if (lang$ | async; as lang) {
+          <button class="btn language-btn" (click)="toggleLanguage(lang)">
+            <i class="fa-solid fa-globe mx-1"></i>
+            {{ lang === "en" ? "العربية" : "English" }}
+          </button>
+        }
+
+        <div class="action-item" (click)="logout()">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <h6>{{ "NAV.LOGOUT" | translate }}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

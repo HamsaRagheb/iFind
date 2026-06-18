@@ -1,0 +1,15 @@
+<section class="slider mb-5">
+  <h4 class="slider-title mb-4">{{ "SLIDER.TITLE" | translate }}</h4>
+
+  <owl-carousel-o *ngIf="showCarousel" [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let category of categories">
+      <div class="category-item d-flex flex-column align-items-center">
+        <div class="image rounded-circle overflow-hidden mb-3">
+          <img [src]="category.image" alt="item-image" class="img-fluid" />
+        </div>
+        <h5>{{ category.nameKey | translate }}</h5>
+        <p>{{ category.items }}</p>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</section>

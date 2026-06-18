@@ -1,0 +1,73 @@
+.slider-title {
+  font-weight: 700;
+  color: var(--text-color);
+  font-size: 30PX;
+}
+
+.slider .image {
+  width: 180px;
+  height: 180px;
+}
+
+.owl-nav {
+  position: relative;
+}
+
+::ng-deep .owl-prev,
+::ng-deep .owl-next {
+  opacity: 0 !important;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--dark-blue) !important;
+  color: var(--light-gray) !important;
+  font-size: 23px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 50px !important;
+  height: 50px !important;
+  transition: opacity var(--transition-duration) ease !important;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  -ms-border-radius: 50% !important;
+  -o-border-radius: 50% !important;
+  -webkit-transition: opacity var(--transition-duration) ease !important;
+  -moz-transition: opacity var(--transition-duration) ease !important;
+  -ms-transition: opacity var(--transition-duration) ease !important;
+  -o-transition: opacity var(--transition-duration) ease !important;
+}
+::ng-deep .owl-prev:hover,
+::ng-deep .owl-next:hover {
+  background-color: var(--soft-blue) !important;
+}
+::ng-deep .owl-prev {
+  left: -40px;
+}
+
+::ng-deep .owl-next {
+  right: -40px;
+}
+
+.slider:hover ::ng-deep .owl-prev,
+.slider:hover ::ng-deep .owl-next {
+  opacity: 1 !important;
+}
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+::ng-deep .owl-item {
+  display: flex !important;
+  justify-content: center;
+}
+
+::ng-deep .owl-stage {
+  display: flex !important;
+  align-items: center;
+}

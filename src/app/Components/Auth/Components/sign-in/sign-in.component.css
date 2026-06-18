@@ -1,0 +1,69 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #213C51, #6594B1, #DDAED3);
+}
+
+.signin-card {
+  background-color: #EEEEEE;
+  padding: 40px;
+  border-radius: 25px;
+}
+
+.title {
+  color: #213C51;
+  font-weight: bold;
+}
+
+.subtitle {
+  color: #6594B1;
+}
+
+.form-label {
+  color: #213C51;
+  font-weight: 600;
+}
+
+.custom-input {
+  border: 2px solid #DDAED3;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.custom-input:focus {
+  border-color: #6594B1;
+  box-shadow: none;
+}
+
+.signin-btn {
+  background-color: #DDAED3;
+  color: #213C51;
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: bold;
+  border: none;
+}
+.signin-btn:disabled {
+  pointer-events: all;
+  cursor: not-allowed;
+}
+.signin-btn:hover {
+  background-color: #6594B1;
+  color: white;
+}
+
+.bottom-text {
+  color: #213C51;
+}
+
+.bottom-text a {
+  color: #DDAED3;
+  text-decoration: none;
+  font-weight: bold;
+}
+.forget-pass-btn a{
+  color: var(--dark-blue);
+}
+.errors p{
+  font-size: 16px;
+}

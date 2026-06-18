@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center min-vh-100">
+    <div class="col-lg-4 col-md-7">
+      <div class="signin-card shadow-lg">
+        <div class="text-center mb-4">
+          <h1 class="title">Welcome Back</h1>
+          <p class="subtitle">Sign in to continue</p>
+        </div>
+
+        <form (ngSubmit)="onSignIn()" [formGroup]="signInForm">
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input
+              formControlName="email"
+              type="email"
+              class="form-control custom-input"
+              placeholder="Enter your email"
+            />
+            @if (
+              signInForm.get("email")?.touched &&
+              signInForm.get("email")?.invalid
+            ) {
+              <div class="text-danger my-1 errors">
+                @if (signInForm.get("email")?.getError("required")) {
+                  <p>Email is required</p>
+                }
+                @if (signInForm.get("email")?.getError("email")) {
+                  <p>Invalid email format</p>
+                }
+              </div>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input
+              formControlName="password"
+              type="password"
+              class="form-control custom-input"
+              placeholder="Enter password"
+            />
+            @if (
+              signInForm.get("password")?.touched &&
+              signInForm.get("password")?.invalid
+            ) {
+              <div class="text-danger my-1">
+                @if (signInForm.get("password")?.getError("required")) {
+                  <p>Password is required</p>
+                }
+              </div>
+            }
+          </div>
+
+          <div class="forget-pass-btn mb-3">
+            <a class="text-decoration-underline" routerLink="/forget-password"
+              >Forget Password?</a
+            >
+          </div>
+          <button
+            type="submit"
+            [disabled]="signInForm.invalid"
+            class="btn signin-btn w-100"
+          >
+            @if (isLoading) {
+              <span
+                class="spinner-border spinner-border-sm me-2"
+                role="status"
+              ></span>
+              Sign In...
+            } @else {
+              Sign In
+            }
+          </button>
+        </form>
+
+        <div class="text-center mt-4">
+          <p class="bottom-text">
+            Don't have an account?
+            <a class="text-decoration-underline" routerLink="/signUp"
+              >Sign Up</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

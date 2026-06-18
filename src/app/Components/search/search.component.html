@@ -1,0 +1,33 @@
+<div class="products my-3 py-5">
+  <div class="container">
+    <ng-container
+      *ngIf="
+        products
+          | search: searchTerm
+          | searchByCategory: selectedCategory as filteredProducts
+      "
+    >
+      <!-- Products Grid -->
+      <div class="row g-5" *ngIf="filteredProducts.length > 0; else noProducts">
+        <div *ngFor="let product of filteredProducts" class="col-md-6 col-lg-3">
+          <app-product [product]="product"></app-product>
+        </div>
+      </div>
+
+      <!-- Not Found -->
+      <ng-template #noProducts>
+        <div class="no-products text-center">
+          <i class="fa-regular fa-face-frown"></i>
+          <h4 class="text-danger">
+            {{ "HOME.NO_PRODUCTS_TITLE" | translate }}
+          </h4>
+          <p>
+            {{ "HOME.NO_PRODUCTS_MSG" | translate }}
+            <strong *ngIf="selectedCategory">"{{ selectedCategory }}"</strong>
+            <strong *ngIf="searchTerm">"{{ searchTerm }}"</strong>
+          </p>
+        </div>
+      </ng-template>
+    </ng-container>
+  </div>
+</div>

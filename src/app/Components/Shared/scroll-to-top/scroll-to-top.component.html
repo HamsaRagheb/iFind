@@ -1,0 +1,10 @@
+<button
+  *ngIf="isVisable"
+  [class.visiable]="isVisable"
+  (click)="scrollToTop()"
+  type="button"
+  class="scroll-to-top d-flex justify-content-center align-items-center rounded-circle border-0"
+  aria-label="Scroll to top"
+>
+  <i class="fa-solid fa-arrow-up"></i>
+</button>

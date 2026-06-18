@@ -1,0 +1,42 @@
+<div *ngIf="isOpen" [class.open]="isOpen" class="category-sidebar">
+  <!-- Header -->
+  <div class="sidebar-header">
+    <h5 class="sidebar-heading">
+      <i class="fa-solid fa-list-ul me-2"></i>
+      Shop by Category
+    </h5>
+
+    <button
+      type="button"
+      class="sidebar-close"
+      (click)="closeSidebar()"
+      aria-label="Close"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <!-- Body -->
+  <div class="sidebar-body">
+    <!-- All Products -->
+    <button class="category-item" (click)="showAllCategories()">
+      <i class="fa-solid fa-border-all"></i>
+      <span>All Categories</span>
+    </button>
+
+    <!-- Categories -->
+    <ng-container *ngFor="let category of categories">
+      <button (click)="selectedCategory(category.name)" class="category-item">
+        <img [src]="category.image" alt="category-img" class="cat-thumb" />
+        <span>{{ category.name }}</span>
+      </button>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Overlay -->
+<div
+  class="sidebar-overlay"
+  [class.show]="isOpen"
+  (click)="closeSidebar()"
+></div>

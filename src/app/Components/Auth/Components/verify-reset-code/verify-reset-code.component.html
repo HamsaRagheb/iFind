@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center min-vh-100">
+    <div class="col-lg-4 col-md-7">
+      <div class="signin-card shadow-lg">
+        <div class="text-center mb-4">
+          <h1 class="title">Enter Reset Code</h1>
+          @if (email) {
+            <p class="subtitle">
+              We sent a 6-digit code to<br /><strong>{{ email }}</strong>
+            </p>
+          } @else {
+            <p class="subtitle">Enter the 6-digit code sent to your email</p>
+          }
+        </div>
+
+        <form (ngSubmit)="onVerify()" [formGroup]="otpForm">
+          <div class="otp-group mb-4">
+            @for (i of [0, 1, 2, 3, 4, 5]; track i) {
+              <input
+                #otpInputs
+                type="text"
+                inputmode="numeric"
+                maxlength="1"
+                class="otp-input"
+                [formControlName]="'digit' + i"
+                (input)="onInput($event, i)"
+                (keydown)="onKeydown($event, i)"
+                (paste)="onPaste($event)"
+                aria-label="Otp Inputs"
+              />
+            }
+          </div>
+
+          @if (otpForm.invalid && otpForm.touched) {
+            <p class="text-danger text-center mb-3">
+              Please fill in all 6 digits.
+            </p>
+          }
+
+          <button
+            type="submit"
+            [disabled]="otpForm.invalid || isLoading"
+            class="btn signin-btn w-100"
+          >
+            @if (isLoading) {
+              <span
+                class="spinner-border spinner-border-sm me-2"
+                role="status"
+              ></span>
+              Verifying...
+            } @else {
+              Verify Code
+            }
+          </button>
+        </form>
+
+        <div class="text-center mt-4">
+          <p class="bottom-text">
+            Wrong email?
+            <a routerLink="/forget-password">Go back</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

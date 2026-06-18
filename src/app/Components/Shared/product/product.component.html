@@ -1,0 +1,48 @@
+<div class="card shadow-lg border-0">
+  <div
+    class="image p-3 position-relative d-flex justify-content-center align-items-center"
+  >
+    <button
+      (click)="onToggleWishlist()"
+      aria-label="wishlist-button"
+      class="wishlist-button position-absolute border-0 bg-white shadow-lg rounded-2 p-2 d-flex justify-content-center align-items-center"
+    >
+      <i
+        class="fa-heart"
+        [class.fa-solid]="isWishlisted"
+        [class.fa-regular]="!isWishlisted"
+      ></i>
+    </button>
+
+    <img [src]="product.imageCover" class="card-img-top" alt="product-img" />
+  </div>
+
+  <div class="card-body position-relative">
+    <div
+      [routerLink]="['/productDetails', product._id]"
+      class="product-details mb-3"
+    >
+      <h5 class="card-title fw-bold">{{ product.title }}</h5>
+      <p class="card-text description">
+        {{ product.description }}
+      </p>
+    </div>
+
+    <div class="review d-flex gap-2 align-items-center flex-wrap">
+      <ul class="stars d-flex p-0 mb-0 list-unstyled">
+        <li *ngFor="let star of averageStars(product.ratingsAverage)">
+          <i class="fa-solid {{ star }}"></i>
+        </li>
+      </ul>
+      <span class="review-count">(120 review)</span>
+    </div>
+
+    <div class="price mt-2">
+      {{ product.price | currency: "USD" : "symbol" }}
+    </div>
+  </div>
+
+  <div class="mx-3 mt-0 mb-3">
+    <a (click)="addToCart()" class="btn add-to-cart d-block">Add to cart</a>
+  </div>
+</div>

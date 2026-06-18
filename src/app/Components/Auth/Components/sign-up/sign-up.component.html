@@ -1,0 +1,156 @@
+<div class="py-5">
+  <div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+      <div class="col-lg-5 col-md-8">
+        <div class="signup-card shadow-lg">
+          <div class="text-center mb-4">
+            <h1 class="title">Create Account</h1>
+            <p class="subtitle">Join us today</p>
+          </div>
+
+          <form (ngSubmit)="onSignUp()" [formGroup]="regForm">
+            <!-- Name -->
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input
+                formControlName="name"
+                type="text"
+                class="form-control custom-input"
+                placeholder="Enter your name"
+              />
+              @if (
+                regForm.get("name")?.touched && regForm.get("name")?.invalid
+              ) {
+                <div class="text-danger my-1">
+                  @if (regForm.get("name")?.getError("required")) {
+                    <p>Name is required</p>
+                  }
+                  @if (regForm.get("name")?.getError("minlength")) {
+                    <p>Name must be at least 3 characters</p>
+                  }
+                  @if (regForm.get("name")?.getError("maxlength")) {
+                    <p>Name must be at most 30 characters</p>
+                  }
+                </div>
+              }
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input
+                formControlName="email"
+                type="email"
+                class="form-control custom-input"
+                placeholder="Enter your email"
+              />
+              @if (
+                regForm.get("email")?.touched && regForm.get("email")?.invalid
+              ) {
+                <div class="text-danger my-1">
+                  @if (regForm.get("email")?.getError("required")) {
+                    <p>Email is required</p>
+                  }
+                  @if (regForm.get("email")?.getError("email")) {
+                    <p>Invalid email format</p>
+                  }
+                </div>
+              }
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input
+                formControlName="password"
+                type="password"
+                class="form-control custom-input"
+                placeholder="Enter password"
+              />
+              @if (
+                regForm.get("password")?.touched &&
+                regForm.get("password")?.invalid
+              ) {
+                <div class="text-danger my-1">
+                  @if (regForm.get("password")?.getError("required")) {
+                    <p>Password is required</p>
+                  }
+                  @if (regForm.get("password")?.getError("pattern")) {
+                    <p>
+                      Password must be 8–32 chars with upper, lower, digit &
+                      special char
+                    </p>
+                  }
+                </div>
+              }
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label">Confirm Password</label>
+              <input
+                formControlName="rePassword"
+                type="password"
+                class="form-control custom-input"
+                placeholder="Confirm password"
+              />
+              @if (
+                regForm.get("rePassword")?.touched &&
+                regForm.get("rePassword")?.invalid
+              ) {
+                <div class="text-danger my-1">
+                  @if (regForm.get("rePassword")?.getError("required")) {
+                    <p>Confirm Password is required</p>
+                  }
+                  @if (regForm.get("rePassword")?.getError("mismatch")) {
+                    <p>Passwords do not match</p>
+                  }
+                </div>
+              }
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone</label>
+              <input
+                formControlName="phone"
+                type="text"
+                class="form-control custom-input"
+                placeholder="Enter your phone"
+              />
+              @if (
+                regForm.get("phone")?.touched && regForm.get("phone")?.invalid
+              ) {
+                <div class="text-danger my-1">
+                  @if (regForm.get("phone")?.getError("required")) {
+                    <p>Phone is required</p>
+                  }
+                  @if (regForm.get("phone")?.getError("pattern")) {
+                    <p>Invalid phone number</p>
+                  }
+                </div>
+              }
+            </div>
+            <button
+              type="submit"
+              [disabled]="regForm.invalid"
+              class="btn signup-btn w-100"
+            >
+              @if (isLoading) {
+                <span
+                  class="spinner-border spinner-border-sm me-2"
+                  role="status"
+                ></span>
+                Sign Up...
+              } @else {
+                Sign Up
+              }
+            </button>
+          </form>
+
+          <div class="text-center mt-4">
+            <p class="bottom-text">
+              Already have an account?
+              <a routerLink="/signin">Sign In</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

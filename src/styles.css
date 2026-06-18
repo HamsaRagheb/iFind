@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --dark-blue: #213C51;
+  --soft-blue: #6594B1;
+  --soft-pink: #DDAED3;
+  --light-gray: #EEEEEE;
+  --transition-duration: 0.5s;
+
+  /* Light mode */
+  --header-bg: #EEEEEE;
+  --bg-color: #f3f3f3;
+  --text-color: #213C51;
+  --card-bg: #ffffff;
+  --border-color: #dee2e6;
+  --input-bg: #ffffff;
+  --navbar-bg: #213C51;
+}
+
+[data-theme='dark'] {
+  --header-bg: #1a1a1a;
+  --bg-color: #121212;
+  --text-color: #EEEEEE;
+  --card-bg: #1e1e1e;
+  --border-color: #444444;
+  --input-bg: #2a2a2a;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+body.spinner-active {
+  overflow: hidden;
+}
+a {
+  text-decoration: none;
+}
+
+.add-to-cart {
+  color: var(--dark-blue);
+  background-color: var(--soft-pink);
+  border: 1px solid var(--primary-dark) !important;
+  font-size: clamp(12.8px, 2vw, 16px);
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background-color: var(--soft-blue);
+  color: var(--light-gray);
+}
+
+.stars .fa-star,
+.stars .fa-star-half-stroke {
+  color: orange;
+}
+
+.stars .fa-star.empty {
+  color: #bebcbcdd;
+}
+app-root {
+  display: block;
+  min-height: 100vh;
+}

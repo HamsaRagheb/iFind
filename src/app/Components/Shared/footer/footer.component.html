@@ -1,0 +1,121 @@
+<footer class="footer-section pt-5">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Logo & About -->
+      <div class="col-lg-4 col-md-6">
+        <img src="images/logo.png" alt="Logo" class="footer-logo mb-3" />
+
+        <p class="footer-text">
+          {{ "FOOTER.ABOUT_TEXT" | translate }}
+        </p>
+
+        <div class="social-icons mt-4">
+          <a href="#">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+          <a href="#">
+            <i class="fab fa-instagram"></i>
+          </a>
+
+          <a href="#">
+            <i class="fab fa-twitter"></i>
+          </a>
+
+          <a href="#">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-md-6 col-6">
+        <h5 class="footer-title">{{ "FOOTER.QUICK_LINKS" | translate }}</h5>
+
+        <ul class="footer-links">
+          <li>
+            <a routerLink="/">{{ "NAV.HOME" | translate }}</a>
+          </li>
+
+          <li>
+            <a routerLink="/products">{{ "FOOTER.PRODUCTS" | translate }}</a>
+          </li>
+
+          <li>
+            <a routerLink="/categories">{{
+              "FOOTER.CATEGORIES" | translate
+            }}</a>
+          </li>
+
+          <li>
+            <a routerLink="/cart">{{ "NAV.CART" | translate }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Customer Service -->
+      <div class="col-lg-2 col-md-6 col-6">
+        <h5 class="footer-title">{{ "FOOTER.SUPPORT" | translate }}</h5>
+
+        <ul class="footer-links">
+          <li>
+            <a href="#">{{ "FOOTER.HELP_CENTER" | translate }}</a>
+          </li>
+          <li>
+            <a href="#">{{ "FOOTER.SHIPPING" | translate }}</a>
+          </li>
+          <li>
+            <a href="#">{{ "FOOTER.RETURNS" | translate }}</a>
+          </li>
+          <li>
+            <a href="#">{{ "FOOTER.CONTACT_US" | translate }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-title">{{ "FOOTER.STAY_UPDATED" | translate }}</h5>
+
+        <p class="footer-text mb-3">
+          {{ "FOOTER.NEWSLETTER_TEXT" | translate }}
+        </p>
+
+        <form [formGroup]="emailForm">
+          <div class="input-group newsletter-group">
+            <input
+              formControlName="email"
+              type="email"
+              class="form-control"
+              [placeholder]="'FOOTER.EMAIL_PLACEHOLDER' | translate"
+              aria-label="Email"
+            />
+            <button (click)="onSubscribe()" class="btn subscribe-btn">
+              {{ "FOOTER.SUBSCRIBE" | translate }}
+            </button>
+          </div>
+        </form>
+
+        <div class="payment-methods mt-4">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-cc-apple-pay"></i>
+        </div>
+      </div>
+    </div>
+
+    <hr class="footer-divider my-4" />
+
+    <div
+      class="d-flex flex-column flex-md-row justify-content-between align-items-center text-center text-md-start pb-3"
+    >
+      <p class="copyright mb-2 mb-md-0">{{ "FOOTER.COPYRIGHT" | translate }}</p>
+
+      <div class="footer-bottom-links">
+        <a href="#">{{ "FOOTER.PRIVACY_POLICY" | translate }}</a>
+        <a href="#">{{ "FOOTER.TERMS" | translate }}</a>
+      </div>
+    </div>
+  </div>
+</footer>

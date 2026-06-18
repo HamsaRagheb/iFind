@@ -1,0 +1,62 @@
+.banner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(to right, #d59dc9, #b9c9de);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Left image ── */
+.banner-left {
+  width: 28%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.banner-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* fade out toward the right */
+  -webkit-mask-image: linear-gradient(to right, black 60%, transparent 100%);
+  mask-image: linear-gradient(to right, black 85%, transparent 100%);
+}
+
+/* ── Center text ── */
+.banner-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #1a2e5a;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* ── Right image ── */
+.banner-right {
+  width: 28%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.banner-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* fade out toward the left */
+  -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%);
+  mask-image: linear-gradient(to left, black 85%, transparent 100%);
+}

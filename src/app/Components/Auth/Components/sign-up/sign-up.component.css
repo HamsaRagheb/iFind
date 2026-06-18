@@ -1,0 +1,65 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #213C51, #6594B1, #DDAED3);
+}
+
+.signup-card {
+  background-color: #EEEEEE;
+  padding: 40px;
+  border-radius: 25px;
+}
+
+.title {
+  color: #213C51;
+  font-weight: bold;
+}
+
+.subtitle {
+  color: #6594B1;
+}
+
+.form-label {
+  color: #213C51;
+  font-weight: 600;
+}
+
+.custom-input {
+  border: 2px solid #DDAED3;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.custom-input:focus {
+  border-color: #6594B1;
+  box-shadow: none;
+}
+
+.signup-btn {
+  background-color: #DDAED3;
+  color: #213C51;
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: bold;
+  border: none;
+}
+.signup-btn:disabled {
+  pointer-events: all;
+  /* re-enable pointer events so cursor can show */
+  cursor: not-allowed;
+}
+
+.signup-btn:hover {
+  background-color: #6594B1;
+  color: white;
+}
+
+.bottom-text {
+  color: #213C51;
+}
+
+.bottom-text a {
+  color: #DDAED3;
+  text-decoration: none;
+  font-weight: bold;
+}

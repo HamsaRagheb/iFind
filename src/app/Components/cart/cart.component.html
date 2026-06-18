@@ -1,0 +1,226 @@
+<!-- cart.html -->
+<app-banner></app-banner>
+
+@if (cartProducts?.data?.products?.length) {
+  <div class="cart py-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- LEFT SIDE -->
+        <div class="col-lg-8">
+          <div class="cart-wrapper">
+            <div class="table-responsive">
+              <table class="table align-middle cart-table">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Subtotal:</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <ng-container
+                    *ngFor="let item of cartProducts?.data?.products"
+                  >
+                    <tr>
+                      <td>
+                        <div
+                          class="product-info d-flex align-items-center gap-3"
+                        >
+                          <div class="product-image">
+                            <img
+                              [src]="item.product.imageCover"
+                              alt="product"
+                            />
+                          </div>
+
+                          <div>
+                            <h6 class="product-title mb-1">
+                              {{ item.product.title }}
+                            </h6>
+
+                            <div class="price">
+                              {{ item.price | currency: "USD" }}
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td>
+                        <div class="quantity-box">
+                          <button
+                            (click)="
+                              decreaseQuantity(item.product._id, item.count)
+                            "
+                          >
+                            -
+                          </button>
+                          <span>{{ item.count | number: "2.0-0" }}</span>
+                          <button
+                            (click)="
+                              increaseQuantity(item.product._id, item.count)
+                            "
+                          >
+                            +
+                          </button>
+                        </div>
+                      </td>
+
+                      <td class="subtotal-price">
+                        {{ item.count * item.price | currency: "USD" }}
+                      </td>
+
+                      <td>
+                        <button
+                          (click)="deleteItem(item.product._id)"
+                          aria-label="Delete"
+                          class="delete-btn"
+                        >
+                          <i class="fa-solid fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Buttons -->
+            <div class="cart-buttons">
+              <button routerLink="/home" class="shop-btn">
+                Continue Shopping
+              </button>
+
+              <button (click)="clearAllItems()" class="delete-all-btn">
+                Delete All
+              </button>
+            </div>
+          </div>
+
+          <!-- Order Note -->
+          <div class="order-note mt-4">
+            <h6 class="mb-3">Add Order Note</h6>
+
+            <textarea
+              [formControl]="orderNote"
+              class="form-control"
+              rows="6"
+              placeholder="How can we help you?"
+            ></textarea>
+            @if (orderNote.touched && orderNote.invalid) {
+              <div class="text-danger mt-3">
+                @if (orderNote.getError("pattern")) {
+                  <p>
+                    Only letters, numbers, and basic punctuation are allowed.
+                  </p>
+                }
+                @if (orderNote.getError("maxlength")) {
+                  <p>Note cannot exceed 200 characters</p>
+                }
+              </div>
+            }
+
+            <div class="text-end mt-3">
+              <button (click)="onSubmitNote()" class="note-btn" type="submit">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="col-lg-4">
+          <div class="cart-summary">
+            <div class="free-shipping">
+              <i class="fa-solid fa-circle-check"></i>
+              Congratulations! You've got free shipping!
+            </div>
+
+            <h5 class="summary-title">Cart totals</h5>
+
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <strong>Rs.59,800.00</strong>
+            </div>
+
+            <hr />
+
+            <h6 class="mb-3">Estimate shipping rates:</h6>
+
+            <div class="mb-3">
+              <label class="form-label">Country</label>
+
+              <select aria-label="Select-Country" class="form-select">
+                <option>New Zealand</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Region</label>
+
+              <select aria-label="Select Region" class="form-select">
+                <option>Auckland</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label"> Zip/Postal Code </label>
+
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Zip/Postal Code"
+              />
+            </div>
+            <hr />
+
+            <h6>Coupon</h6>
+
+            <p class="coupon-text">Coupon code will work on checkout page.</p>
+
+            <input
+              type="text"
+              class="form-control mb-3"
+              placeholder="Coupon code"
+            />
+
+            <div class="summary-row">
+              <span>You save in total</span>
+              <strong>Rs.20,200.00</strong>
+            </div>
+
+            <div class="summary-row total-price">
+              <span>Order Details</span>
+              <strong>Rs.59,800.00</strong>
+            </div>
+
+            <div class="form-check my-3">
+              <input class="form-check-input" type="checkbox" id="agree" />
+
+              <label class="form-check-label" for="agree">
+                I agree with Terms & Conditions
+              </label>
+            </div>
+
+            <button routerLink="/checkout" class="checkout-btn w-100">
+              Check Out
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="container">
+    <div class="empty-cart text-center py-5 my-5">
+      <i class="fa-solid fa-cart-shopping fa-3x mb-3 empty-cart-icon"></i>
+
+      <h5 class="empty-cart-title">Your cart is empty</h5>
+
+      <p class="empty-cart-text">Looks like you haven't added anything yet.</p>
+
+      <button routerLink="/search" class="shop-btn mt-2">Start Shopping</button>
+    </div>
+  </div>
+}

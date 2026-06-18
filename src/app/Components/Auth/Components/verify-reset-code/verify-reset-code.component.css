@@ -1,0 +1,79 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #213C51, #6594B1, #DDAED3);
+}
+
+.signin-card {
+  background-color: #EEEEEE;
+  padding: 40px;
+  border-radius: 25px;
+}
+
+.title {
+  color: #213C51;
+  font-weight: bold;
+}
+
+.subtitle {
+  color: #6594B1;
+  font-size: 0.9rem;
+}
+
+.otp-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.otp-input {
+  width: 50px;
+  height: 56px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #213C51;
+  border: 2px solid #DDAED3;
+  border-radius: 12px;
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.otp-input:focus {
+  border-color: #6594B1;
+  box-shadow: 0 0 0 3px rgba(101, 148, 177, 0.2);
+}
+
+.signin-btn {
+  background-color: #DDAED3;
+  color: #213C51;
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: bold;
+  border: none;
+}
+
+.signin-btn:disabled {
+  cursor: not-allowed;
+}
+
+.signin-btn:hover:not(:disabled) {
+  background-color: #6594B1;
+  color: white;
+}
+
+.bottom-text {
+  color: #213C51;
+  font-size: 0.9rem;
+}
+
+.bottom-text a {
+  color: #DDAED3;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.bottom-text a:hover {
+  color: #6594B1;
+}

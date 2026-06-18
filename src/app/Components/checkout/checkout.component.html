@@ -1,0 +1,244 @@
+<div class="checkout-page py-5">
+  <div class="container">
+    <div class="checkout-header mb-5">
+      <h2 class="fw-bold">Checkout</h2>
+      <p class="mb-0">Complete your order securely</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- LEFT -->
+      <div class="col-lg-7">
+        <div class="checkout-form">
+          <!-- Contact -->
+          <div class="section">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="section-title">Contact</h5>
+            </div>
+
+            <input
+              type="email"
+              class="form-control mb-3"
+              placeholder="Email or mobile phone number"
+            />
+
+            <div class="form-check">
+              <input
+                aria-label="Email"
+                class="form-check-input"
+                type="checkbox"
+              />
+
+              <label class="form-check-label">
+                Email me with news and offers
+              </label>
+            </div>
+          </div>
+
+          <!-- Delivery -->
+          <div class="section">
+            <h5 class="section-title">Delivery</h5>
+
+            <select aria-label="Select Countery" class="form-select mb-3">
+              <option value="EG">Egypt</option>
+              <option value="SA">Saudi Arabia</option>
+              <option value="AE">United Arab Emirates</option>
+              <option value="QA">Qatar</option>
+              <option value="KW">Kuwait</option>
+              <option value="BH">Bahrain</option>
+              <option value="OM">Oman</option>
+            </select>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="First name"
+                />
+              </div>
+
+              <div class="col-md-6">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Last name"
+                />
+              </div>
+            </div>
+
+            <input
+              type="text"
+              class="form-control mb-3"
+              placeholder="Address"
+            />
+
+            <input
+              type="text"
+              class="form-control mb-3"
+              placeholder="Apartment, suite, etc. (optional)"
+            />
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="City" />
+              </div>
+
+              <div class="col-md-4">
+                <select aria-label="State" class="form-select">
+                  <option>State</option>
+                </select>
+              </div>
+
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="ZIP code"
+                />
+              </div>
+            </div>
+
+            <div class="form-check">
+              <input
+                aria-label="Check"
+                class="form-check-input"
+                type="checkbox"
+              />
+
+              <label class="form-check-label">
+                Save this information for next time
+              </label>
+            </div>
+          </div>
+
+          <!-- Shipping -->
+          <div class="section">
+            <h5 class="section-title">Shipping Method</h5>
+
+            <div class="shipping-placeholder">
+              Enter your shipping address to view available shipping methods.
+            </div>
+          </div>
+
+          <!-- Payment -->
+          <div class="section">
+            <h5 class="section-title">Payment</h5>
+
+            <p class="small">All transactions are secure and encrypted.</p>
+
+            <div class="payment-card">
+              <div class="payment-header">
+                <div class="form-check mb-0">
+                  <input
+                    aria-label="payment"
+                    checked
+                    class="form-check-input"
+                    type="radio"
+                    name="payment"
+                  />
+
+                  <label class="form-check-label fw-medium">
+                    Credit Card
+                  </label>
+                </div>
+
+                <span class="payment-badge"> VISA </span>
+              </div>
+
+              <div class="payment-body">
+                <input class="form-control mb-3" placeholder="Card number" />
+
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <input class="form-control" placeholder="MM / YY" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <input class="form-control" placeholder="CVV" />
+                  </div>
+                </div>
+
+                <input class="form-control mb-3" placeholder="Name on card" />
+
+                <div class="form-check">
+                  <input
+                    aria-label="Check"
+                    checked
+                    class="form-check-input"
+                    type="checkbox"
+                  />
+
+                  <label class="form-check-label">
+                    Use shipping address as billing address
+                  </label>
+                </div>
+              </div>
+
+              <div class="cod-option">
+                <div class="form-check">
+                  <input
+                    aria-label="Check"
+                    class="form-check-input"
+                    type="radio"
+                    name="payment"
+                  />
+
+                  <label class="form-check-label"> Cash On Delivery </label>
+                </div>
+              </div>
+            </div>
+
+            <button (click)="nextStep()" class="btn checkout-btn w-100 mt-4">
+              Pay Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="col-lg-5">
+        <div class="order-summary">
+          <h5 class="section-title mb-4">Order Summary</h5>
+
+          <div *ngFor="let item of cartProducts" class="product-item">
+            <div class="product-left">
+              <div class="product-image">
+                <img [src]="item.product.imageCover" alt="item-img" />
+
+                <span class="quantity-badge">
+                  {{ item.count }}
+                </span>
+              </div>
+
+              <div>
+                <h6 class="mb-1">
+                  {{ item.product.title }}
+                </h6>
+              </div>
+            </div>
+
+            <div class="price">
+              {{ item.price * item.count | currency: "USD" }}
+            </div>
+          </div>
+        </div>
+        <div class="all-price">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span>{{ totalPrice | currency: "USD" }}</span>
+          </div>
+
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span>Free</span>
+          </div>
+
+          <div class="summary-row total">
+            <span>Total</span>
+            <span>{{ totalPrice | currency: "USD" }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

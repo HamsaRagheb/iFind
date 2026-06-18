@@ -1,0 +1,202 @@
+<div class="container product-wrapper">
+  <div class="row g-4">
+    <!-- LEFT SIDE -->
+    <div class="col-lg-6">
+      <div class="image-section">
+        <button aria-label="Fullscreen" class="fullscreen-btn">
+          <i class="fa-solid fa-maximize"></i>
+        </button>
+
+        <div class="main-image-container">
+          <img [src]="selectedImage" class="main-image" alt="Product" />
+        </div>
+
+        <div class="thumbnail-container">
+          <div
+            *ngFor="let image of productDetails?.data?.images; let i = index"
+            class="thumb"
+            [class.active]="selectedImageIndex === i"
+            (click)="changeMainImage(image, i)"
+          >
+            <img [src]="image" alt="thumbnail-image" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="col-lg-6">
+      <div class="product-card h-100">
+        <h1 class="product-title">{{ productDetails?.data?.title }}</h1>
+
+        <div class="rating mb-3 d-flex gap-3 align-items-center">
+          <div class="stars-review d-flex align-items-center gap-1">
+            <div
+              *ngFor="
+                let star of averageStars(
+                  productDetails?.data?.ratingsAverage ?? 0
+                )
+              "
+              class="stars"
+            >
+              <i class="fa-solid {{ star }}"></i>
+            </div>
+            <div class="review text-secondary">
+              <p
+                *ngIf="
+                  productDetails?.data?.reviews?.length === 1;
+                  else reviews
+                "
+              >
+                ({{ productDetails?.data?.reviews?.length }} review)
+              </p>
+              <ng-template #reviews
+                >({{
+                  productDetails?.data?.reviews?.length
+                }}
+                reviews)</ng-template
+              >
+            </div>
+          </div>
+          <div class="rating-text">
+            <i class="fa-solid fa-fire ms-4 me-1"></i>
+            <span class="text-secondary"
+              ><strong>6</strong> sold in last <strong>24 hours</strong></span
+            >
+          </div>
+        </div>
+
+        <div class="all-prices mb-3">
+          <div class="price-option">
+            <ng-container
+              *ngIf="productDetails?.data?.priceAfterDiscount; else normalPrice"
+            >
+              <span class="price">{{
+                productDetails?.data?.priceAfterDiscount | currency: "USD"
+              }}</span>
+
+              <span class="old-price">
+                {{ productDetails?.data?.price | currency: "USD" }}
+              </span>
+
+              <div class="discount">Discount: 30%</div>
+            </ng-container>
+            <ng-template #normalPrice>
+              <span class="price">{{
+                productDetails?.data?.price | currency: "USD"
+              }}</span>
+            </ng-template>
+          </div>
+
+          <p class="product-description text-secondary">
+            {{ productDetails?.data?.description }}
+          </p>
+
+          <!-- Colors -->
+          <h5>
+            Color :
+            <span class="text-muted"> Black </span>
+          </h5>
+
+          <div class="d-flex gap-2 my-3">
+            <div class="color-option active">
+              <div class="inner-circle bg-black"></div>
+            </div>
+
+            <div class="color-option">
+              <div class="inner-circle pink"></div>
+            </div>
+
+            <div class="color-option">
+              <div class="inner-circle green"></div>
+            </div>
+          </div>
+
+          <hr class="text-black-50" />
+
+          <!-- Stock -->
+          <p class="stock-label mt-4 mb-2">Hurry Up! Only 10 Left in Stock!</p>
+
+          <div class="stock-bar mb-4">
+            <div class="stock-fill"></div>
+          </div>
+
+          <!-- Product Info -->
+          <p>
+            <strong>Availability:</strong>
+            <span class="stock-badge ms-2"> In Stock </span>
+          </p>
+
+          <p>
+            <strong>SKU:</strong>
+            {{ productDetails?.data?._id }}
+          </p>
+
+          <p>
+            <strong>Categories:</strong>
+            {{ productDetails?.data?.category?.name }}
+          </p>
+
+          <!-- Quantity & Buttons -->
+          <div class="actions d-flex gap-2 align-items-center my-4">
+            <div class="quantity-box h-100 d-flex align-items-center">
+              <button>-</button>
+
+              <input aria-label="QuantityNumber" type="text" value="1" />
+
+              <button>+</button>
+            </div>
+
+            <button
+              (click)="addToCart()"
+              class="btn add-to-cart h-100 flex-grow-1"
+            >
+              Add To Cart
+            </button>
+
+            <button
+              (click)="toggleWishlist()"
+              aria-label="FavoriteIcone"
+              class="icon-btn h-100"
+            >
+              <i
+                class="fa-heart"
+                [class.fa-solid]="isWishlisted"
+                [class.fa-regular]="!isWishlisted"
+              ></i>
+            </button>
+          </div>
+
+          <hr class="my-4" />
+
+          <!-- Delivery -->
+          <div class="delivery-info">
+            <p>
+              <i class="bi bi-truck"></i>
+              Estimated Delivery:
+              <strong>May 29 - Jun 02</strong>
+            </p>
+
+            <p>
+              <i class="bi bi-arrow-repeat"></i>
+              Return within 90 days of purchase.
+            </p>
+          </div>
+
+          <hr />
+
+          <!-- Share -->
+          <div class="d-flex align-items-center">
+            <h5 class="me-3 mb-0">Share:</h5>
+
+            <div class="share-icons">
+              <i class="fa-brands fa-facebook-f"></i>
+              <i class="fa-brands fa-x-twitter"></i>
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

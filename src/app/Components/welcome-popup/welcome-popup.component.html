@@ -1,0 +1,30 @@
+<div
+  *ngIf="isVisable"
+  (click)="closeOverlay($event)"
+  class="overlay d-flex justify-content-center align-items-center"
+>
+  <div class="popup position-relative">
+    <!-- Close Button -->
+    <button
+      (click)="close()"
+      class="close-btn position-absolute"
+      aria-label="Close button"
+    >
+      <i class="fas fa-times"></i>
+    </button>
+
+    <!-- Text Content -->
+    <div class="popup-content d-flex justify-content-center align-items-center">
+      <p class="sub-heading">WELCOME TO OUR STORE!</p>
+      <h2 class="main-heading">
+        Discover <br />
+        Everything
+      </h2>
+      <p class="description">
+        Explore a wide range of products <br />
+        carefully selected for you.
+      </p>
+      <button (click)="close()" class="shop-btn">Shop Now</button>
+    </div>
+  </div>
+</div>

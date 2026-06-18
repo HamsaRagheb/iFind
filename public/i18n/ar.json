@@ -1,0 +1,59 @@
+{
+  "NAV": {
+    "SHOP_BY_CATEGORY": "تصفح حسب الفئة",
+    "HOME": "الرئيسية",
+    "ACCOUNT": "حسابي",
+    "WISHLIST": "المفضلة",
+    "CART": "السلة",
+    "NAVIGATION": "التنقل",
+    "SETTINGS": "الإعدادات",
+    "MY_ACCOUNT": "حسابي",
+    "LOGOUT": "تسجيل الخروج"
+  },
+  "HEADER": {
+    "SEARCH_PLACEHOLDER": "ابحث عن منتجات...",
+    "SEARCH_PLACEHOLDER_MOBILE": "ابحث عن منتجات...",
+    "ALL_CATEGORIES": "كل الفئات"
+  },
+  "HOME": {
+    "TITLE": "كل ما تحبه في مكان واحد",
+    "SUBTITLE": "اكتشف أفضل المنتجات بأفضل الأسعار",
+    "SHOP_NOW": "تسوق الآن",
+    "NO_PRODUCTS_TITLE": "لا توجد منتجات",
+    "NO_PRODUCTS_MSG": "لم نجد أي منتجات تطابق"
+  },
+  "FOOTER": {
+    "ABOUT_TEXT": "اكتشف أفضل منتجات الأزياء والإلكترونيات وأسلوب الحياة. تسوق بثقة واستمتع بتجربة تسوق إلكترونية سلسة.",
+    "QUICK_LINKS": "روابط سريعة",
+    "PRODUCTS": "المنتجات",
+    "CATEGORIES": "الفئات",
+    "SUPPORT": "الدعم",
+    "HELP_CENTER": "مركز المساعدة",
+    "SHIPPING": "الشحن",
+    "RETURNS": "الإرجاع",
+    "CONTACT_US": "تواصل معنا",
+    "STAY_UPDATED": "ابق على اطلاع",
+    "NEWSLETTER_TEXT": "اشترك للحصول على تحديثات حول الوافدين الجدد والعروض الخاصة.",
+    "EMAIL_PLACEHOLDER": "أدخل بريدك الإلكتروني",
+    "SUBSCRIBE": "اشترك",
+    "PRIVACY_POLICY": "سياسة الخصوصية",
+    "TERMS": "الشروط والأحكام",
+    "COPYRIGHT": "© 2026 iFind. جميع الحقوق محفوظة."
+  },
+  "SLIDER": {
+  "TITLE": "اكتشف مجموعاتنا المختارة",
+  "MACBOOK_PCS":    "ماك بوك / حواسيب",
+  "CASUAL_SHIRTS":  "قمصان كاجوال",
+  "LAPTOP":         "لابتوب",
+  "FLORAL_DRESSES": "فساتين زهرية",
+  "WOMENS_SHIRTS":  "قمصان نسائية",
+  "TV_LCD":         "تلفزيون وشاشات",
+  "WOMENS_DRESSES": "فساتين نسائية",
+  "MENS_APPAREL":   "ملابس رجالية",
+  "HANDSFREE":      "سماعة هاندزفري",
+  "JOYSTICKS":      "جويستيك",
+  "EARBUDS":        "سماعات لاسلكية",
+  "CASUAL_SHOES":   "أحذية كاجوال",
+  "COTTON_SOCKS":   "جوارب قطنية"
+}
+}

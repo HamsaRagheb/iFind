@@ -1,0 +1,45 @@
+<div class="home">
+  <div class="bg-slider">
+    <div
+      *ngFor="let img of bgImages; let i = index"
+      class="bg-slide"
+      [class.active]="i === currentSlide"
+      [style.backgroundImage]="'url(' + img + ')'"
+    ></div>
+  </div>
+  <!-- Text overlay -->
+  <div class="home-overlay">
+    <h1 class="home-title">
+      {{ "HOME.TITLE" | translate }}
+    </h1>
+    <p class="home-subtitle">{{ "HOME.SUBTITLE" | translate }}</p>
+    <button routerLink="/search" class="home-btn">
+      {{ "HOME.SHOP_NOW" | translate }}
+    </button>
+  </div>
+  <!-- dot indicators -->
+  <div class="slider-dots">
+    <span
+      *ngFor="let img of bgImages; let i = index"
+      class="dot"
+      [class.active]="i === currentSlide"
+      (click)="goToSlide(i)"
+    ></span>
+  </div>
+</div>
+<div class="container my-3 py-5">
+  <app-slider></app-slider>
+</div>
+<app-banner></app-banner>
+
+<div class="products my-3 py-5">
+  <div class="container">
+    <ng-container *ngIf="products">
+      <div class="row g-5">
+        <div *ngFor="let product of products" class="col-md-6 col-lg-3">
+          <app-product [product]="product"></app-product>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

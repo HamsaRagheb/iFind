@@ -1,0 +1,59 @@
+{
+  "NAV": {
+    "SHOP_BY_CATEGORY": "Shop by Category",
+    "HOME": "Home",
+    "ACCOUNT": "Account",
+    "WISHLIST": "Wishlist",
+    "CART": "Cart",
+    "NAVIGATION": "NAVIGATION",
+    "SETTINGS": "SETTINGS",
+    "MY_ACCOUNT": "My Account",
+    "LOGOUT": "Logout"
+  },
+  "HEADER": {
+    "SEARCH_PLACEHOLDER": "Search for products...",
+    "SEARCH_PLACEHOLDER_MOBILE": "Search products...",
+    "ALL_CATEGORIES": "All Categories"
+  },
+  "HOME": {
+    "TITLE": "Everything you love in one place",
+    "SUBTITLE": "Discover the best products at the best prices",
+    "SHOP_NOW": "Shop Now",
+    "NO_PRODUCTS_TITLE": "No Products Found",
+    "NO_PRODUCTS_MSG": "We couldn't find any products matching"
+  },
+  "FOOTER": {
+    "ABOUT_TEXT": "Discover premium fashion, electronics, and lifestyle products. Shop with confidence and enjoy a seamless online shopping experience.",
+    "QUICK_LINKS": "Quick Links",
+    "PRODUCTS": "Products",
+    "CATEGORIES": "Categories",
+    "SUPPORT": "Support",
+    "HELP_CENTER": "Help Center",
+    "SHIPPING": "Shipping",
+    "RETURNS": "Returns",
+    "CONTACT_US": "Contact Us",
+    "STAY_UPDATED": "Stay Updated",
+    "NEWSLETTER_TEXT": "Subscribe to get updates about new arrivals and special offers.",
+    "EMAIL_PLACEHOLDER": "Enter your email",
+    "SUBSCRIBE": "Subscribe",
+    "PRIVACY_POLICY": "Privacy Policy",
+    "TERMS": "Terms & Conditions",
+    "COPYRIGHT": "© 2026 iFind. All Rights Reserved."
+  },
+  "SLIDER": {
+  "TITLE": "Discover Our Collections",
+  "MACBOOK_PCS":    "MacBook / PCs",
+  "CASUAL_SHIRTS":  "Casual Shirts",
+  "LAPTOP":         "Laptop",
+  "FLORAL_DRESSES": "Floral Dresses",
+  "WOMENS_SHIRTS":  "Women's Shirts",
+  "TV_LCD":         "TV & LCD",
+  "WOMENS_DRESSES": "Women's Dresses",
+  "MENS_APPAREL":   "Men's Apparel",
+  "HANDSFREE":      "Handsfree",
+  "JOYSTICKS":      "Joysticks",
+  "EARBUDS":        "Earbuds",
+  "CASUAL_SHOES":   "Casual Shoes",
+  "COTTON_SOCKS":   "Cotton Socks"
+}
+}
