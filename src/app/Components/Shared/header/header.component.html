@@ -78,7 +78,7 @@
           >
             <option>{{ "HEADER.ALL_CATEGORIES" | translate }}</option>
             <ng-container *ngFor="let category of categories">
-              <option>{{ category.name }}</option>
+              <option [value]="category.name">{{ category.name }}</option>
             </ng-container>
           </select>
 

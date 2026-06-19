@@ -81,7 +81,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.searchInputDesktop.nativeElement.focus();
   }
   onCategoryChange(event: Event): void {
-    this._searchService.setCategory((event.target as HTMLSelectElement).value);
+    const value = (event.target as HTMLSelectElement).value;
+    this._searchService.setCategory(value); // empty string = show all
+    this._router.navigate(['/search']);
   }
 
   toggleLanguage(currentLang: 'en' | 'ar'): void {
