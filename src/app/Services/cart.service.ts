@@ -19,6 +19,10 @@ export class CartService {
   }
 
   loadCartItemsCountFromServer() {
+    const token = localStorage.getItem('userToken');
+
+    if (!token) return;
+
     this._productService.getUserCart().subscribe({
       next: (res) => {
         this.cartItemsCount.next(res.numOfCartItems);
