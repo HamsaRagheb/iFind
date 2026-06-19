@@ -150,5 +150,24 @@
     "BH": "Bahrain",
     "OM": "Oman"
   }
+},
+"PRODUCT_DETAILS": {
+  "SOLD_LAST_24H": "sold in last",
+  "HOURS": "hours",
+  "DISCOUNT": "Discount",
+  "COLOR": "Color",
+  "BLACK": "Black",
+  "HURRY_UP": "Hurry Up! Only 10 Left in Stock!",
+  "AVAILABILITY": "Availability",
+  "IN_STOCK": "In Stock",
+  "SKU": "SKU",
+  "CATEGORIES": "Categories",
+  "ADD_TO_CART": "Add To Cart",
+  "ESTIMATED_DELIVERY": "Estimated Delivery",
+  "DELIVERY_DATE": "August 29 – September 2",
+  "RETURN_POLICY": "Return within 90 days of purchase.",
+  "SHARE": "Share",
+  "REVIEW": "review",
+  "REVIEWS": "reviews"
 }
 }

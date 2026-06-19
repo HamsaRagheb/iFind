@@ -3,9 +3,9 @@
     <!-- LEFT SIDE -->
     <div class="col-lg-6">
       <div class="image-section">
-        <button aria-label="Fullscreen" class="fullscreen-btn">
+        <!-- <button aria-label="Fullscreen" class="fullscreen-btn">
           <i class="fa-solid fa-maximize"></i>
-        </button>
+        </button> -->
 
         <div class="main-image-container">
           <img [src]="selectedImage" class="main-image" alt="Product" />
@@ -41,28 +41,29 @@
             >
               <i class="fa-solid {{ star }}"></i>
             </div>
-            <div class="review text-secondary">
+            <div class="review">
               <p
                 *ngIf="
                   productDetails?.data?.reviews?.length === 1;
                   else reviews
                 "
               >
-                ({{ productDetails?.data?.reviews?.length }} review)
+                ({{ productDetails?.data?.reviews?.length }}
+                {{ "PRODUCT_DETAILS.REVIEW" | translate }})
               </p>
-              <ng-template #reviews
-                >({{
-                  productDetails?.data?.reviews?.length
-                }}
-                reviews)</ng-template
-              >
+              <ng-template #reviews>
+                ({{ productDetails?.data?.reviews?.length }}
+                {{ "PRODUCT_DETAILS.REVIEWS" | translate }})
+              </ng-template>
             </div>
           </div>
           <div class="rating-text">
             <i class="fa-solid fa-fire ms-4 me-1"></i>
-            <span class="text-secondary"
-              ><strong>6</strong> sold in last <strong>24 hours</strong></span
-            >
+            <span>
+              <strong>6</strong>
+              {{ "PRODUCT_DETAILS.SOLD_LAST_24H" | translate }}
+              <strong>24</strong> {{ "PRODUCT_DETAILS.HOURS" | translate }}
+            </span>
           </div>
         </div>
 
@@ -74,12 +75,12 @@
               <span class="price">{{
                 productDetails?.data?.priceAfterDiscount | currency: "USD"
               }}</span>
-
-              <span class="old-price">
-                {{ productDetails?.data?.price | currency: "USD" }}
-              </span>
-
-              <div class="discount">Discount: 30%</div>
+              <span class="old-price">{{
+                productDetails?.data?.price | currency: "USD"
+              }}</span>
+              <div class="discount">
+                {{ "PRODUCT_DETAILS.DISCOUNT" | translate }}: 30%
+              </div>
             </ng-container>
             <ng-template #normalPrice>
               <span class="price">{{
@@ -88,25 +89,25 @@
             </ng-template>
           </div>
 
-          <p class="product-description text-secondary">
+          <p class="product-description">
             {{ productDetails?.data?.description }}
           </p>
 
           <!-- Colors -->
           <h5>
-            Color :
-            <span class="text-muted"> Black </span>
+            {{ "PRODUCT_DETAILS.COLOR" | translate }} :
+            <span class="text-muted">
+              {{ "PRODUCT_DETAILS.BLACK" | translate }}
+            </span>
           </h5>
 
-          <div class="d-flex gap-2 my-3">
+          <div class="colors d-flex gap-2 my-3">
             <div class="color-option active">
               <div class="inner-circle bg-black"></div>
             </div>
-
             <div class="color-option">
               <div class="inner-circle pink"></div>
             </div>
-
             <div class="color-option">
               <div class="inner-circle green"></div>
             </div>
@@ -115,7 +116,9 @@
           <hr class="text-black-50" />
 
           <!-- Stock -->
-          <p class="stock-label mt-4 mb-2">Hurry Up! Only 10 Left in Stock!</p>
+          <p class="stock-label mt-4 mb-2">
+            {{ "PRODUCT_DETAILS.HURRY_UP" | translate }}
+          </p>
 
           <div class="stock-bar mb-4">
             <div class="stock-fill"></div>
@@ -123,35 +126,29 @@
 
           <!-- Product Info -->
           <p>
-            <strong>Availability:</strong>
-            <span class="stock-badge ms-2"> In Stock </span>
+            <strong>{{ "PRODUCT_DETAILS.AVAILABILITY" | translate }}:</strong>
+            <span class="stock-badge ms-2">{{
+              "PRODUCT_DETAILS.IN_STOCK" | translate
+            }}</span>
           </p>
 
           <p>
-            <strong>SKU:</strong>
+            <strong>{{ "PRODUCT_DETAILS.SKU" | translate }}:</strong>
             {{ productDetails?.data?._id }}
           </p>
 
           <p>
-            <strong>Categories:</strong>
+            <strong>{{ "PRODUCT_DETAILS.CATEGORIES" | translate }}:</strong>
             {{ productDetails?.data?.category?.name }}
           </p>
 
           <!-- Quantity & Buttons -->
           <div class="actions d-flex gap-2 align-items-center my-4">
-            <div class="quantity-box h-100 d-flex align-items-center">
-              <button>-</button>
-
-              <input aria-label="QuantityNumber" type="text" value="1" />
-
-              <button>+</button>
-            </div>
-
             <button
               (click)="addToCart()"
               class="btn add-to-cart h-100 flex-grow-1"
             >
-              Add To Cart
+              {{ "PRODUCT_DETAILS.ADD_TO_CART" | translate }}
             </button>
 
             <button
@@ -172,14 +169,13 @@
           <!-- Delivery -->
           <div class="delivery-info">
             <p>
-              <i class="bi bi-truck"></i>
-              Estimated Delivery:
-              <strong>May 29 - Jun 02</strong>
+              <i class="fa-regular fa-truck"></i>
+              {{ "PRODUCT_DETAILS.ESTIMATED_DELIVERY" | translate }}:
+              <strong>{{ "PRODUCT_DETAILS.DELIVERY_DATE" | translate }}</strong>
             </p>
-
             <p>
-              <i class="bi bi-arrow-repeat"></i>
-              Return within 90 days of purchase.
+              <i class="fa-solid fa-arrows-rotate"></i>
+              {{ "PRODUCT_DETAILS.RETURN_POLICY" | translate }}
             </p>
           </div>
 
@@ -187,8 +183,9 @@
 
           <!-- Share -->
           <div class="d-flex align-items-center">
-            <h5 class="me-3 mb-0">Share:</h5>
-
+            <h5 class="me-3 mb-0">
+              {{ "PRODUCT_DETAILS.SHARE" | translate }}:
+            </h5>
             <div class="share-icons">
               <i class="fa-brands fa-facebook-f"></i>
               <i class="fa-brands fa-x-twitter"></i>

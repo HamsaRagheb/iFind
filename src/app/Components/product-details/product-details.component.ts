@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common';
 import { SweetAlertService } from '../../Services/sweet-alert.service';
 import { WishlistService } from '../../Services/wishlist.service';
 import { CartService } from '../../Services/cart.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
 })

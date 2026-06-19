@@ -150,5 +150,24 @@
     "BH": "البحرين",
     "OM": "عُمان"
   }
+},
+"PRODUCT_DETAILS": {
+  "SOLD_LAST_24H": "مُباع في آخر",
+  "HOURS": "ساعة",
+  "DISCOUNT": "الخصم",
+  "COLOR": "اللون",
+  "BLACK": "أسود",
+  "HURRY_UP": "أسرع! لم يتبق سوى 10 قطع في المخزون!",
+  "AVAILABILITY": "التوفر",
+  "IN_STOCK": "متوفر",
+  "SKU": "رمز المنتج",
+  "CATEGORIES": "الفئات",
+  "ADD_TO_CART": "أضف إلى السلة",
+  "ESTIMATED_DELIVERY": "موعد التسليم المتوقع",
+  "DELIVERY_DATE": "29 أغسطس - 2 سبتمبر",
+  "RETURN_POLICY": "الإرجاع خلال 90 يومًا من الشراء.",
+  "SHARE": "مشاركة",
+  "REVIEW": "تقييم",
+  "REVIEWS": "تقييمات"
 }
 }

@@ -36,7 +36,7 @@
 
 .banner-title {
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 2rem;
+  font-size: 32px;
   font-weight: 400;
   color: #1a2e5a;
   letter-spacing: 1px;
@@ -59,4 +59,10 @@
   /* fade out toward the left */
   -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%);
   mask-image: linear-gradient(to left, black 85%, transparent 100%);
+}
+
+@media screen and (max-width: 768px) {
+  .banner-title {
+    font-size: 23px;
+  }
 }
