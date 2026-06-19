@@ -2,6 +2,8 @@
 .profile-page {
   height: 100vh;
   background: var(--bg-color);
+  min-height: calc(100vh - 180px);
+  padding-bottom: 40px;
 }
 
 /* ==========================
@@ -58,9 +60,9 @@
   position: relative;
   background: var(--card-bg);
   border-radius: 24px;
-  margin: -150px auto 0px;
+  margin: -200px auto 0px;
   max-width: 900px;
-  padding: 90px 40px 30px;
+  padding: 66px 40px 25px;
   box-shadow: 0 20px 40px rgba(33, 60, 81, .12);
 }
 

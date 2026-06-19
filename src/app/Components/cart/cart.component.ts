@@ -5,12 +5,7 @@ import { RouterLink } from '@angular/router';
 import { CartService } from '../../Services/cart.service';
 import { BannerComponent } from '../Shared/banner/banner.component';
 import { SweetAlertService } from '../../Services/sweet-alert.service';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
@@ -81,8 +76,8 @@ export class CartComponent {
   }
   async deleteItem(itemId: string) {
     const confirmed = await this._sweetAlert.confirm(
-      'Remove this item?',
-      'This product will be removed from your cart.',
+      'SWEET_ALERT.REMOVE_ITEM_TITLE',
+      'SWEET_ALERT.REMOVE_ITEM_TEXT',
     );
 
     if (!confirmed) return;
@@ -91,8 +86,8 @@ export class CartComponent {
       next: (res) => {
         this.cartProducts = res;
         this._sweetAlert.success(
-          'Removed!',
-          'The product has been removed successfully from your cart.',
+          'SWEET_ALERT.REMOVED_TITLE',
+          'SWEET_ALERT.REMOVED_TEXT',
         );
       },
     });
@@ -100,8 +95,8 @@ export class CartComponent {
 
   async clearAllItems() {
     const confirmed = await this._sweetAlert.confirm(
-      'Clear your cart?',
-      'All items will be removed from your cart.',
+      'SWEET_ALERT.CLEAR_CART_TITLE',
+      'SWEET_ALERT.CLEAR_CART_TEXT',
     );
 
     if (!confirmed) return;
@@ -113,7 +108,10 @@ export class CartComponent {
             this.cartProducts.data.products = [];
             this.cartProducts.numOfCartItems = 0;
           }
-          this._sweetAlert.success('success', 'Cart cleared successfully.');
+          this._sweetAlert.success(
+            'SWEET_ALERT.SUCCESS',
+            'SWEET_ALERT.CART_CLEARED',
+          );
         }
       },
     });
@@ -124,16 +122,16 @@ export class CartComponent {
     const note = this.orderNote.value?.trim();
     if (!note) {
       this._sweetAlert.error(
-        'Empty Note',
-        'Please enter a note before submitting.',
+        'SWEET_ALERT.EMPTY_NOTE_TITLE',
+        'SWEET_ALERT.EMPTY_NOTE_TEXT',
       );
       this.orderNote.reset();
       return;
     }
 
     this._sweetAlert.success(
-      'Thank You!',
-      'Your note has been submitted successfully.',
+      'SWEET_ALERT.NOTE_SUBMITTED_TITLE',
+      'SWEET_ALERT.NOTE_SUBMITTED_TEXT',
     );
     this.orderNote.reset();
   }

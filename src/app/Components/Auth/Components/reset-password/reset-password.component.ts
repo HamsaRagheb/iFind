@@ -10,6 +10,7 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../../Services/auth.service';
 import { SweetAlertService } from '../../../../Services/sweet-alert.service';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 // Custom validator: confirm must match password
 const passwordMatchValidator: ValidatorFn = (form: AbstractControl) => {
@@ -20,7 +21,7 @@ const passwordMatchValidator: ValidatorFn = (form: AbstractControl) => {
 
 @Component({
   selector: 'app-reset-password',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, TranslatePipe],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.css',
 })
@@ -47,6 +48,7 @@ export class ResetPasswordComponent implements OnInit {
     private _authService: AuthService,
     private _sweetAlert: SweetAlertService,
     private _router: Router,
+    private _translate: TranslateService,
   ) {}
 
   ngOnInit() {
@@ -64,8 +66,8 @@ export class ResetPasswordComponent implements OnInit {
       next: () => {
         this.isLoading = false;
         this._sweetAlert.success(
-          'Password Reset!',
-          'You can now sign in with your new password.',
+          this._translate.instant('AUTH.RESET_PASSWORD.SUCCESS_TITLE'),
+          this._translate.instant('AUTH.RESET_PASSWORD.SUCCESS_MESSAGE'),
         );
         this._router.navigate(['/signIn']);
       },

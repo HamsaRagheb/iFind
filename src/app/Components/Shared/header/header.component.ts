@@ -2,6 +2,7 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 import {
   Component,
   ElementRef,
+  Input,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -32,6 +33,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private wishlistSub!: Subscription;
   private categorySub!: Subscription;
   private cartSub!: Subscription;
+  @Input() isLoggedIn!: boolean;
   wishlistCount = 0;
   cartCount = 0;
   categories: Category[] = [];

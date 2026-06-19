@@ -1,24 +1,46 @@
 import { Injectable } from '@angular/core';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SweetAlertService {
+  constructor(private _translate: TranslateService) {}
+
   success(title: string, message: string = '') {
     Swal.fire({
       icon: 'success',
-      title: title,
-      text: message,
+      title: this._translate.instant(title),
+      text: message ? this._translate.instant(message) : '',
       confirmButtonColor: 'var(--soft-pink)',
     });
+  }
+
+  successWithAction(
+    title: string,
+    message: string = '',
+    actionText: string = '',
+  ): Promise<boolean> {
+    return Swal.fire({
+      icon: 'success',
+      title: this._translate.instant(title),
+      text: message ? this._translate.instant(message) : '',
+      confirmButtonColor: 'var(--dark-blue)',
+      confirmButtonText: this._translate.instant(actionText),
+      showCancelButton: true,
+      cancelButtonText: this._translate.instant(
+        'SWEET_ALERT.CONTINUE_SHOPPING',
+      ),
+      cancelButtonColor: 'var(--soft-pink)',
+    }).then((result) => result.isConfirmed);
   }
 
   error(title: string, message: string = '') {
     Swal.fire({
       icon: 'error',
-      title: title,
-      text: message,
+      title: this._translate.instant(title),
+      text: message ? this._translate.instant(message) : '',
       confirmButtonColor: 'var(--soft-pink)',
     });
   }
@@ -26,8 +48,8 @@ export class SweetAlertService {
   warning(title: string, message: string = '') {
     Swal.fire({
       icon: 'warning',
-      title: title,
-      text: message,
+      title: this._translate.instant(title),
+      text: message ? this._translate.instant(message) : '',
       confirmButtonColor: 'var(--soft-pink)',
     });
   }
@@ -39,22 +61,22 @@ export class SweetAlertService {
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true,
-    }).fire({ icon, title });
+    }).fire({ icon, title: this._translate.instant(title) });
   }
 
   confirm(
-    title: string = 'Are you sure?',
-    message: string = "You won't be able to revert this!",
+    title: string = 'SWEET_ALERT.ARE_YOU_SURE',
+    message: string = 'SWEET_ALERT.CANNOT_REVERT',
   ): Promise<boolean> {
     return Swal.fire({
-      title,
-      text: message,
+      title: this._translate.instant(title),
+      text: this._translate.instant(message),
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: 'var(--dark-blue)',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'Cancel',
+      confirmButtonText: this._translate.instant('SWEET_ALERT.YES_DELETE'),
+      cancelButtonText: this._translate.instant('SWEET_ALERT.CANCEL'),
     }).then((result) => result.isConfirmed);
   }
 
@@ -70,7 +92,7 @@ export class SweetAlertService {
     } = {},
   ) {
     Swal.fire({
-      title: options.title ?? '',
+      title: options.title ? this._translate.instant(options.title) : '',
       width: options.width ?? 600,
       padding: options.padding ?? '3em',
       color: options.color ?? 'var(--dark-blue)',

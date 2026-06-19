@@ -12,6 +12,7 @@ import {
 import { AuthService } from '../../../../Services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { SignUpUser } from '../../../../Models/auth.model';
+import { TranslatePipe } from '@ngx-translate/core';
 
 // 1. Define the custom cross-field validator
 export const passwordMatchValidator: ValidatorFn = (
@@ -37,7 +38,7 @@ export const passwordMatchValidator: ValidatorFn = (
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink, TranslatePipe],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css',
 })

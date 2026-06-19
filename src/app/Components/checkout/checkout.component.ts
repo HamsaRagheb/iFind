@@ -47,7 +47,7 @@ export class CheckoutComponent {
 
   nextStep() {
     this._sweetAlert.custom({
-      title: 'Payment Gateway Coming Soon....',
+      title: 'SWEET_ALERT.PAYMENT_COMING_SOON',
     });
   }
 }

@@ -14,10 +14,11 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../../Services/auth.service';
 import { SweetAlertService } from '../../../../Services/sweet-alert.service';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-verify-reset-code',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, TranslatePipe],
   templateUrl: './verify-reset-code.component.html',
   styleUrl: './verify-reset-code.component.css',
 })
@@ -60,6 +61,7 @@ export class VerifyResetCodeComponent implements OnInit {
     private _authService: AuthService,
     private _sweetAlert: SweetAlertService,
     private _router: Router,
+    private _translate: TranslateService,
   ) {}
 
   ngOnInit() {
@@ -79,11 +81,13 @@ export class VerifyResetCodeComponent implements OnInit {
     this._authService.verifyResetCode(code).subscribe({
       next: (res) => {
         this.isLoading = false;
+
         if (res.status === 'Success') {
           this._sweetAlert.success(
-            'Verified!',
-            'Redirecting to reset your password...',
+            this._translate.instant('AUTH.VERIFY_RESET_CODE.SUCCESS_TITLE'),
+            this._translate.instant('AUTH.VERIFY_RESET_CODE.SUCCESS_MESSAGE'),
           );
+
           this._router.navigateByUrl('/reset-password', {
             state: { email: this.email },
           });

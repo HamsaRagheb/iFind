@@ -4,66 +4,75 @@
       <div class="col-lg-5 col-md-8">
         <div class="signup-card shadow-lg">
           <div class="text-center mb-4">
-            <h1 class="title">Create Account</h1>
-            <p class="subtitle">Join us today</p>
+            <h1 class="title">{{ "AUTH.SIGN_UP.TITLE" | translate }}</h1>
+            <p class="subtitle">{{ "AUTH.SIGN_UP.SUBTITLE" | translate }}</p>
           </div>
 
           <form (ngSubmit)="onSignUp()" [formGroup]="regForm">
             <!-- Name -->
             <div class="mb-3">
-              <label class="form-label">Name</label>
+              <label class="form-label">{{
+                "AUTH.SIGN_UP.NAME" | translate
+              }}</label>
               <input
                 formControlName="name"
                 type="text"
                 class="form-control custom-input"
-                placeholder="Enter your name"
+                [placeholder]="'AUTH.SIGN_UP.NAME_PLACEHOLDER' | translate"
+                aria-label="Name"
               />
               @if (
                 regForm.get("name")?.touched && regForm.get("name")?.invalid
               ) {
                 <div class="text-danger my-1">
                   @if (regForm.get("name")?.getError("required")) {
-                    <p>Name is required</p>
+                    <p>{{ "AUTH.SIGN_UP.NAME_REQUIRED" | translate }}</p>
                   }
                   @if (regForm.get("name")?.getError("minlength")) {
-                    <p>Name must be at least 3 characters</p>
+                    <p>{{ "AUTH.SIGN_UP.NAME_MINLENGTH" | translate }}</p>
                   }
                   @if (regForm.get("name")?.getError("maxlength")) {
-                    <p>Name must be at most 30 characters</p>
+                    <p>{{ "AUTH.SIGN_UP.NAME_MAXLENGTH" | translate }}</p>
                   }
                 </div>
               }
             </div>
 
             <div class="mb-3">
-              <label class="form-label">Email</label>
+              <label class="form-label">{{
+                "AUTH.SIGN_UP.EMAIL" | translate
+              }}</label>
               <input
                 formControlName="email"
                 type="email"
                 class="form-control custom-input"
-                placeholder="Enter your email"
+                [placeholder]="'AUTH.SIGN_UP.EMAIL_PLACEHOLDER' | translate"
+                aria-label="Email"
               />
               @if (
                 regForm.get("email")?.touched && regForm.get("email")?.invalid
               ) {
                 <div class="text-danger my-1">
                   @if (regForm.get("email")?.getError("required")) {
-                    <p>Email is required</p>
+                    <p>{{ "AUTH.SIGN_UP.EMAIL_REQUIRED" | translate }}</p>
                   }
                   @if (regForm.get("email")?.getError("email")) {
-                    <p>Invalid email format</p>
+                    <p>{{ "AUTH.SIGN_UP.EMAIL_INVALID" | translate }}</p>
                   }
                 </div>
               }
             </div>
 
             <div class="mb-3">
-              <label class="form-label">Password</label>
+              <label class="form-label">{{
+                "AUTH.SIGN_UP.PASSWORD" | translate
+              }}</label>
               <input
                 formControlName="password"
                 type="password"
                 class="form-control custom-input"
-                placeholder="Enter password"
+                [placeholder]="'AUTH.SIGN_UP.PASSWORD_PLACEHOLDER' | translate"
+                aria-label="Password"
               />
               @if (
                 regForm.get("password")?.touched &&
@@ -71,25 +80,27 @@
               ) {
                 <div class="text-danger my-1">
                   @if (regForm.get("password")?.getError("required")) {
-                    <p>Password is required</p>
+                    <p>{{ "AUTH.SIGN_UP.PASSWORD_REQUIRED" | translate }}</p>
                   }
                   @if (regForm.get("password")?.getError("pattern")) {
-                    <p>
-                      Password must be 8–32 chars with upper, lower, digit &
-                      special char
-                    </p>
+                    <p>{{ "AUTH.SIGN_UP.PASSWORD_PATTERN" | translate }}</p>
                   }
                 </div>
               }
             </div>
 
             <div class="mb-4">
-              <label class="form-label">Confirm Password</label>
+              <label class="form-label">{{
+                "AUTH.SIGN_UP.CONFIRM_PASSWORD" | translate
+              }}</label>
               <input
                 formControlName="rePassword"
                 type="password"
                 class="form-control custom-input"
-                placeholder="Confirm password"
+                [placeholder]="
+                  'AUTH.SIGN_UP.CONFIRM_PASSWORD_PLACEHOLDER' | translate
+                "
+                aria-label="Re-Password"
               />
               @if (
                 regForm.get("rePassword")?.touched &&
@@ -97,35 +108,42 @@
               ) {
                 <div class="text-danger my-1">
                   @if (regForm.get("rePassword")?.getError("required")) {
-                    <p>Confirm Password is required</p>
+                    <p>
+                      {{ "AUTH.SIGN_UP.CONFIRM_PASSWORD_REQUIRED" | translate }}
+                    </p>
                   }
                   @if (regForm.get("rePassword")?.getError("mismatch")) {
-                    <p>Passwords do not match</p>
+                    <p>{{ "AUTH.SIGN_UP.PASSWORD_MISMATCH" | translate }}</p>
                   }
                 </div>
               }
             </div>
+
             <div class="mb-3">
-              <label class="form-label">Phone</label>
+              <label class="form-label">{{
+                "AUTH.SIGN_UP.PHONE" | translate
+              }}</label>
               <input
                 formControlName="phone"
                 type="text"
                 class="form-control custom-input"
-                placeholder="Enter your phone"
+                [placeholder]="'AUTH.SIGN_UP.PHONE_PLACEHOLDER' | translate"
+                aria-label="Phone"
               />
               @if (
                 regForm.get("phone")?.touched && regForm.get("phone")?.invalid
               ) {
                 <div class="text-danger my-1">
                   @if (regForm.get("phone")?.getError("required")) {
-                    <p>Phone is required</p>
+                    <p>{{ "AUTH.SIGN_UP.PHONE_REQUIRED" | translate }}</p>
                   }
                   @if (regForm.get("phone")?.getError("pattern")) {
-                    <p>Invalid phone number</p>
+                    <p>{{ "AUTH.SIGN_UP.PHONE_INVALID" | translate }}</p>
                   }
                 </div>
               }
             </div>
+
             <button
               type="submit"
               [disabled]="regForm.invalid"
@@ -136,17 +154,19 @@
                   class="spinner-border spinner-border-sm me-2"
                   role="status"
                 ></span>
-                Sign Up...
+                {{ "AUTH.SIGN_UP.SUBMITTING" | translate }}
               } @else {
-                Sign Up
+                {{ "AUTH.SIGN_UP.SUBMIT" | translate }}
               }
             </button>
           </form>
 
           <div class="text-center mt-4">
             <p class="bottom-text">
-              Already have an account?
-              <a routerLink="/signin">Sign In</a>
+              {{ "AUTH.SIGN_UP.HAVE_ACCOUNT" | translate }}
+              <a routerLink="/signin">{{
+                "AUTH.SIGN_UP.SIGN_IN" | translate
+              }}</a>
             </p>
           </div>
         </div>

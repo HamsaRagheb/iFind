@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { VerifyTokenResponse } from '../../Models/auth.model';
 import { AuthService } from '../../Services/auth.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profile',
-  imports: [RouterLink],
+  imports: [RouterLink, TranslatePipe],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })

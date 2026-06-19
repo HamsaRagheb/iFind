@@ -3,17 +3,19 @@ import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { SweetAlertService } from '../Services/sweet-alert.service';
 import { catchError, throwError } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const _router = inject(Router);
   const _sweetAlert = inject(SweetAlertService);
+  const _translate = inject(TranslateService);
 
   return next(req).pipe(
     catchError((err: HttpErrorResponse) => {
       if (!err.status || err.status === 0) {
         _sweetAlert.error(
-          'Network Error',
-          'Please check your internet connection and try again.',
+          _translate.instant('ERRORS.NETWORK_TITLE'),
+          _translate.instant('ERRORS.NETWORK_MESSAGE'),
         );
         return throwError(() => err);
       }
@@ -22,49 +24,59 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
         case 401:
           localStorage.removeItem('userToken');
           _router.navigate(['/login']);
-          _sweetAlert.error('Unauthorized', 'Please log in to continue.');
+          _sweetAlert.error(
+            _translate.instant('ERRORS.UNAUTHORIZED_TITLE'),
+            _translate.instant('ERRORS.UNAUTHORIZED_MESSAGE'),
+          );
           break;
+
         case 403:
           _sweetAlert.error(
-            'Forbidden',
-            'You do not have permission to access this resource.',
+            _translate.instant('ERRORS.FORBIDDEN_TITLE'),
+            _translate.instant('ERRORS.FORBIDDEN_MESSAGE'),
           );
           break;
+
         case 404:
           _sweetAlert.error(
-            'Not Found',
-            'The requested resource was not found.',
+            _translate.instant('ERRORS.NOT_FOUND_TITLE'),
+            _translate.instant('ERRORS.NOT_FOUND_MESSAGE'),
           );
           break;
+
         case 405:
           _sweetAlert.error(
-            'Method Not Allowed',
-            'The requested method is not allowed for this resource.',
+            _translate.instant('ERRORS.METHOD_NOT_ALLOWED_TITLE'),
+            _translate.instant('ERRORS.METHOD_NOT_ALLOWED_MESSAGE'),
           );
           break;
+
         case 409:
           _sweetAlert.error(
-            'Conflict',
-            'The requested action could not be completed due to a conflict.',
+            _translate.instant('ERRORS.CONFLICT_TITLE'),
+            _translate.instant('ERRORS.CONFLICT_MESSAGE'),
           );
           break;
+
         case 422:
           _sweetAlert.error(
-            'Validation Error',
-            err.error?.message || 'Please check your input and try again.',
+            _translate.instant('ERRORS.VALIDATION_TITLE'),
+            err.error?.message ||
+              _translate.instant('ERRORS.VALIDATION_MESSAGE'),
           );
           break;
+
         case 500:
           _sweetAlert.error(
-            'Internal Server Error',
-            'Something went wrong on our end.',
+            _translate.instant('ERRORS.SERVER_ERROR_TITLE'),
+            _translate.instant('ERRORS.SERVER_ERROR_MESSAGE'),
           );
           break;
+
         default:
           _sweetAlert.error(
-            'Error',
-            err.error?.message ||
-              'An unexpected error occurred. Please try again later.',
+            _translate.instant('ERRORS.ERROR_TITLE'),
+            err.error?.message || _translate.instant('ERRORS.ERROR_MESSAGE'),
           );
           break;
       }

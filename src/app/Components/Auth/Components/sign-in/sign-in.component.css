@@ -5,65 +5,77 @@
 }
 
 .signin-card {
-  background-color: #EEEEEE;
+  background-color: var(--card-bg);
   padding: 40px;
   border-radius: 25px;
 }
 
 .title {
-  color: #213C51;
+  color: var(--text-color);
   font-weight: bold;
 }
 
 .subtitle {
-  color: #6594B1;
+  color: var(--soft-blue);
 }
 
 .form-label {
-  color: #213C51;
+  color: var(--text-color);
   font-weight: 600;
 }
 
 .custom-input {
-  border: 2px solid #DDAED3;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border: 2px solid var(--border-color);
   border-radius: 12px;
   padding: 12px;
 }
 
+.custom-input::placeholder {
+  color: var(--text-color);
+  opacity: 0.6;
+}
+
 .custom-input:focus {
-  border-color: #6594B1;
+  border-color: var(--soft-blue);
   box-shadow: none;
 }
 
 .signin-btn {
-  background-color: #DDAED3;
-  color: #213C51;
+  background-color: var(--soft-pink);
+  color: var(--dark-blue);
   border-radius: 12px;
   padding: 12px;
   font-weight: bold;
   border: none;
 }
+
 .signin-btn:disabled {
   pointer-events: all;
   cursor: not-allowed;
 }
+
 .signin-btn:hover {
-  background-color: #6594B1;
+  background-color: var(--soft-blue);
   color: white;
 }
 
 .bottom-text {
-  color: #213C51;
+  color: var(--text-color);
 }
 
-.bottom-text a {
-  color: #DDAED3;
+.bottom-text a,
+.forget-pass-btn a {
+  color: var(--soft-pink);
   text-decoration: none;
   font-weight: bold;
 }
-.forget-pass-btn a{
-  color: var(--dark-blue);
-}
-.errors p{
+
+.errors p {
   font-size: 16px;
+}
+
+[data-theme='dark'] .signin-card {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }

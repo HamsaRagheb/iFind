@@ -9,10 +9,11 @@ import { AuthService } from '../../../../Services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SignInUser } from '../../../../Models/auth.model';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sign-in',
-  imports: [ReactiveFormsModule, CommonModule, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink, TranslatePipe],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css',
 })
@@ -40,10 +41,9 @@ export class SignInComponent {
           this.userIsLogin = true;
           localStorage.setItem('userToken', res.token!);
           localStorage.setItem('userEmail', res.user?.email!);
+          sessionStorage.setItem('showWelcome', 'true');
           this._authService.setLoggedIn(true);
-          this._router.navigate(['/home'], {
-            queryParams: { welcome: 'true' },
-          });
+          this._router.navigate(['/home']);
         },
         error: (err) => {
           this.isLoading = false;

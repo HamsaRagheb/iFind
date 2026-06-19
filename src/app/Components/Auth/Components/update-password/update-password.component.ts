@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 import { ChangePasswordPayload } from '../../../../Models/auth.model';
 import { SweetAlertService } from '../../../../Services/sweet-alert.service';
 import { Router } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 export const passwordMatchValidator: ValidatorFn = (
   control: AbstractControl,
@@ -36,7 +37,7 @@ export const passwordMatchValidator: ValidatorFn = (
 
 @Component({
   selector: 'app-update-password',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, TranslatePipe],
   templateUrl: './update-password.component.html',
   styleUrl: './update-password.component.css',
 })

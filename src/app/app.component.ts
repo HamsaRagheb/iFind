@@ -8,7 +8,7 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
 import { FooterComponent } from './Components/Shared/footer/footer.component';
 import { NavbarComponent } from './Components/Shared/navbar/navbar.component';
 import { CategorySidebarComponent } from './Components/Shared/category-sidebar/category-sidebar.component';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import { selectLanguage } from './Store/language/language.selector';
 import { ScrollToTopComponent } from './Components/Shared/scroll-to-top/scroll-to-top.component';
@@ -38,7 +38,10 @@ export class AppComponent {
     private _authService: AuthService,
     private _store: Store,
     private _translateService: TranslateService,
-  ) {}
+    private translate: TranslateService,
+  ) {
+    console.log(this.translate.instant('ERRORS.UNAUTHORIZED_TITLE'));
+  }
 
   ngOnInit() {
     this.subscription = this._authService.isLoggedIn$.subscribe({

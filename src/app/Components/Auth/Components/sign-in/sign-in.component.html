@@ -3,18 +3,21 @@
     <div class="col-lg-4 col-md-7">
       <div class="signin-card shadow-lg">
         <div class="text-center mb-4">
-          <h1 class="title">Welcome Back</h1>
-          <p class="subtitle">Sign in to continue</p>
+          <h1 class="title">{{ "AUTH.SIGN_IN.TITLE" | translate }}</h1>
+          <p class="subtitle">{{ "AUTH.SIGN_IN.SUBTITLE" | translate }}</p>
         </div>
 
         <form (ngSubmit)="onSignIn()" [formGroup]="signInForm">
           <div class="mb-3">
-            <label class="form-label">Email</label>
+            <label class="form-label">{{
+              "AUTH.SIGN_IN.EMAIL" | translate
+            }}</label>
             <input
               formControlName="email"
               type="email"
               class="form-control custom-input"
-              placeholder="Enter your email"
+              [placeholder]="'AUTH.SIGN_IN.EMAIL_PLACEHOLDER' | translate"
+              aria-label="Email"
             />
             @if (
               signInForm.get("email")?.touched &&
@@ -22,22 +25,25 @@
             ) {
               <div class="text-danger my-1 errors">
                 @if (signInForm.get("email")?.getError("required")) {
-                  <p>Email is required</p>
+                  <p>{{ "AUTH.SIGN_IN.EMAIL_REQUIRED" | translate }}</p>
                 }
                 @if (signInForm.get("email")?.getError("email")) {
-                  <p>Invalid email format</p>
+                  <p>{{ "AUTH.SIGN_IN.EMAIL_INVALID" | translate }}</p>
                 }
               </div>
             }
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Password</label>
+            <label class="form-label">{{
+              "AUTH.SIGN_IN.PASSWORD" | translate
+            }}</label>
             <input
               formControlName="password"
               type="password"
               class="form-control custom-input"
-              placeholder="Enter password"
+              [placeholder]="'AUTH.SIGN_IN.PASSWORD_PLACEHOLDER' | translate"
+              aria-label="Password"
             />
             @if (
               signInForm.get("password")?.touched &&
@@ -45,16 +51,16 @@
             ) {
               <div class="text-danger my-1">
                 @if (signInForm.get("password")?.getError("required")) {
-                  <p>Password is required</p>
+                  <p>{{ "AUTH.SIGN_IN.PASSWORD_REQUIRED" | translate }}</p>
                 }
               </div>
             }
           </div>
 
           <div class="forget-pass-btn mb-3">
-            <a class="text-decoration-underline" routerLink="/forget-password"
-              >Forget Password?</a
-            >
+            <a class="text-decoration-underline" routerLink="/forget-password">
+              {{ "AUTH.SIGN_IN.FORGET_PASSWORD" | translate }}
+            </a>
           </div>
           <button
             type="submit"
@@ -66,19 +72,19 @@
                 class="spinner-border spinner-border-sm me-2"
                 role="status"
               ></span>
-              Sign In...
+              {{ "AUTH.SIGN_IN.SUBMITTING" | translate }}
             } @else {
-              Sign In
+              {{ "AUTH.SIGN_IN.SUBMIT" | translate }}
             }
           </button>
         </form>
 
         <div class="text-center mt-4">
           <p class="bottom-text">
-            Don't have an account?
-            <a class="text-decoration-underline" routerLink="/signUp"
-              >Sign Up</a
-            >
+            {{ "AUTH.SIGN_IN.NO_ACCOUNT" | translate }}
+            <a class="text-decoration-underline" routerLink="/signUp">
+              {{ "AUTH.SIGN_IN.SIGN_UP" | translate }}
+            </a>
           </p>
         </div>
       </div>

@@ -10,15 +10,16 @@ import {
 import { ProductsService } from '../../../Services/products.service';
 import { Subscription } from 'rxjs';
 import { Product } from '../../../Models/product.model';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { SweetAlertService } from '../../../Services/sweet-alert.service';
 import { WishlistService } from '../../../Services/wishlist.service';
 import { CartService } from '../../../Services/cart.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, TranslatePipe],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
 })
@@ -33,6 +34,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     private _productsService: ProductsService,
     private _sweetAlert: SweetAlertService,
     private _cartService: CartService,
+    private _router: Router,
   ) {}
 
   ngOnInit() {
@@ -59,7 +61,11 @@ export class ProductComponent implements OnInit, OnDestroy {
       this._productsService.addToWishlist(this.product._id).subscribe({
         next: (res) => {
           this._wishlistService.addWishlistIds(this.product._id);
-          this._sweetAlert.success('Added', res.message);
+          this._sweetAlert
+            .successWithAction('Added', res.message, 'Go To Wishlist')
+            .then((goToWishlist) => {
+              if (goToWishlist) this._router.navigate(['/wishlist']);
+            });
         },
       });
     }
@@ -72,7 +78,17 @@ export class ProductComponent implements OnInit, OnDestroy {
   addToCart() {
     this._cartService.addToCart(this.product._id).subscribe({
       next: (res) => {
-        this._sweetAlert.success('Added to cart', res.message);
+        this._sweetAlert
+          .successWithAction(
+            'CART.Added_TO_CART',
+            res.message,
+            'PRODUCT_DETAILS.GO_TO_CART',
+          )
+          .then((goToCart) => {
+            if (goToCart) {
+              this._router.navigate(['/cart']);
+            }
+          });
       },
     });
   }

@@ -1,6 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterLink,
+} from '@angular/router';
+import { filter, take } from 'rxjs';
 
 @Component({
   selector: 'app-welcome-popup',
@@ -11,20 +17,27 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 export class WelcomePopupComponent {
   isVisable = false;
 
-  constructor(private _activatedRoute: ActivatedRoute) {}
-  ngOnInit() {
-    const hidden = sessionStorage.getItem('hideWelcome');
-    const showWelcome =
-      this._activatedRoute.snapshot.queryParamMap.get('welcome');
+  constructor(private _router: Router) {}
 
-    if (!hidden && showWelcome === 'true') {
-      setTimeout(() => (this.isVisable = true), 1000);
-    }
+  ngOnInit() {
+    this._router.events
+      .pipe(filter((e) => e instanceof NavigationEnd))
+      .subscribe(() => {
+        const hidden = sessionStorage.getItem('hideWelcome');
+        const showWelcome = sessionStorage.getItem('showWelcome');
+
+        if (!hidden && showWelcome === 'true') {
+          sessionStorage.removeItem('showWelcome');
+          setTimeout(() => (this.isVisable = true), 1000);
+        }
+      });
   }
 
   close() {
     sessionStorage.setItem('hideWelcome', 'true');
     this.isVisable = false;
+    document.body.style.overflow = '';
+    this._router.navigate(['/home']);
   }
 
   closeOverlay(event: MouseEvent) {

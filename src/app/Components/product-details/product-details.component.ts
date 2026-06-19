@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from '../../Services/products.service';
 import { Subscription } from 'rxjs';
 import { ProductDetailResponse } from '../../Models/product-detail.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SweetAlertService } from '../../Services/sweet-alert.service';
 import { WishlistService } from '../../Services/wishlist.service';
@@ -32,6 +32,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     private _sweerAlert: SweetAlertService,
     private _wishlistService: WishlistService,
     private _cartService: CartService,
+    private _router: Router,
   ) {}
 
   ngOnInit() {
@@ -63,7 +64,19 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   addToCart() {
     this._cartService.addToCart(this.id).subscribe({
       next: (res) => {
-        this._sweerAlert.success('Success', res.message);
+        this._sweerAlert
+          .successWithAction(
+            'CART.Added_TO_CART',
+            res.message,
+            'PRODUCT_DETAILS.GO_TO_CART',
+          )
+          .then((goToCart) => {
+            if (goToCart) {
+              this._router.navigate(['/cart']);
+            } else {
+              this._router.navigate(['/search']);
+            }
+          });
       },
     });
   }

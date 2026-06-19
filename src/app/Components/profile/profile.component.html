@@ -15,7 +15,6 @@
       </div>
 
       <!-- Content -->
-
       <div class="text-center">
         <h2 class="profile-name">{{ user?.name }}</h2>
 
@@ -24,9 +23,8 @@
             <div class="info-icon">
               <i class="fa-solid fa-user-shield"></i>
             </div>
-
             <div class="info-content">
-              <span class="info-label">Role:</span>
+              <span class="info-label">{{ "PROFILE.ROLE" | translate }}</span>
               <h6>{{ user?.role }}</h6>
             </div>
           </div>
@@ -35,9 +33,8 @@
             <div class="info-icon">
               <i class="fa-solid fa-envelope"></i>
             </div>
-
             <div class="info-content">
-              <span class="info-label">Email</span>
+              <span class="info-label">{{ "PROFILE.EMAIL" | translate }}</span>
               <h6 class="email">{{ userEmail }}</h6>
             </div>
           </div>
@@ -47,19 +44,19 @@
           routerLink="/home"
           class="profile-btn mb-3 d-block text-center w-100"
         >
-          Continue shopping
+          {{ "PROFILE.CONTINUE_SHOPPING" | translate }}
         </button>
         <button
           routerLink="/changePassword"
           class="profile-btn mb-3 d-block text-center w-100"
         >
-          Update password
+          {{ "PROFILE.UPDATE_PASSWORD" | translate }}
         </button>
         <button
           (click)="logout()"
           class="profile-btn mb-1 d-block text-center w-100"
         >
-          Logout
+          {{ "PROFILE.LOGOUT" | translate }}
         </button>
       </div>
     </div>

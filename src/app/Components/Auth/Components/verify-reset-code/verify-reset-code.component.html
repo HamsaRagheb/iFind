@@ -3,13 +3,18 @@
     <div class="col-lg-4 col-md-7">
       <div class="signin-card shadow-lg">
         <div class="text-center mb-4">
-          <h1 class="title">Enter Reset Code</h1>
+          <h1 class="title">
+            {{ "AUTH.VERIFY_RESET_CODE.TITLE" | translate }}
+          </h1>
           @if (email) {
             <p class="subtitle">
-              We sent a 6-digit code to<br /><strong>{{ email }}</strong>
+              {{ "AUTH.VERIFY_RESET_CODE.SUBTITLE_WITH_EMAIL" | translate
+              }}<br /><strong>{{ email }}</strong>
             </p>
           } @else {
-            <p class="subtitle">Enter the 6-digit code sent to your email</p>
+            <p class="subtitle">
+              {{ "AUTH.VERIFY_RESET_CODE.SUBTITLE_NO_EMAIL" | translate }}
+            </p>
           }
         </div>
 
@@ -33,7 +38,7 @@
 
           @if (otpForm.invalid && otpForm.touched) {
             <p class="text-danger text-center mb-3">
-              Please fill in all 6 digits.
+              {{ "AUTH.VERIFY_RESET_CODE.INVALID" | translate }}
             </p>
           }
 
@@ -47,17 +52,19 @@
                 class="spinner-border spinner-border-sm me-2"
                 role="status"
               ></span>
-              Verifying...
+              {{ "AUTH.VERIFY_RESET_CODE.SUBMITTING" | translate }}
             } @else {
-              Verify Code
+              {{ "AUTH.VERIFY_RESET_CODE.SUBMIT" | translate }}
             }
           </button>
         </form>
 
         <div class="text-center mt-4">
           <p class="bottom-text">
-            Wrong email?
-            <a routerLink="/forget-password">Go back</a>
+            {{ "AUTH.VERIFY_RESET_CODE.WRONG_EMAIL" | translate }}
+            <a routerLink="/forget-password">{{
+              "AUTH.VERIFY_RESET_CODE.GO_BACK" | translate
+            }}</a>
           </p>
         </div>
       </div>
