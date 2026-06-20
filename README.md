@@ -1,59 +1,112 @@
 # iFind
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.21.
+A fully-featured e-commerce web application built with **standalone Angular 19** components, supporting end-to-end shopping workflows including product browsing, search and filtering, cart management, checkout, and wishlist functionality.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **Authentication** — sign-up, sign-in, forgot/reset/update password, and email-based reset code verification
+- **Multilingual Support** — full Arabic/English localization (i18n) backed by a dedicated NgRx language store
+- **Theme System** — light/dark mode toggle, persisted in `localStorage` and applied globally via CSS custom properties and a `[data-theme]` attribute, with smooth transitions across the UI
+- **Shopping Experience** — product browsing, product details, search and category filtering, cart, checkout, and wishlist
+- **Route Protection** — Auth and User guards securing private routes
+- **Global HTTP Layer** — interceptors for auth token injection, centralized error handling, and loading spinner state
+- **Reusable Component Library** — shared header, navbar, footer, banner, slider, category sidebar, welcome popup, and scroll-to-top components
+
+## Tech Stack
+
+| Category         | Technology                          |
+|-------------------|--------------------------------------|
+| Framework         | Angular 19 (Standalone Components)  |
+| Language          | TypeScript                          |
+| State Management  | NgRx (actions, effects, reducers, selectors) |
+| Styling           | CSS3, custom theming via CSS variables |
+| Localization      | Angular i18n                        |
+| Notifications     | SweetAlert2                         |
+
+## Architecture
+
+The project follows a modular, standalone-component architecture organized by domain:
+
+```
+src/app/
+├── Components/
+│   ├── Auth/
+│   │   ├── sign-in/
+│   │   ├── sign-up/
+│   │   ├── forget-password/
+│   │   ├── reset-password/
+│   │   ├── verify-reset-code/
+│   │   └── update-password/
+│   ├── cart/
+│   ├── checkout/
+│   ├── home/
+│   ├── product-details/
+│   ├── profile/
+│   ├── search/
+│   ├── slider/
+│   ├── welcome-popup/
+│   ├── wishlist/
+│   └── Shared/
+│       ├── banner/
+│       ├── category-sidebar/
+│       ├── footer/
+│       ├── header/
+│       ├── navbar/
+│       ├── product/
+│       └── scroll-to-top/
+├── Guards/                 # auth.guard.ts, user.guard.ts — route protection
+├── Interceptors/           # auth, error, and spinner interceptors
+├── Models/                 # auth, cart, category, product, product-detail, wishlist
+├── Pipes/                  # search.pipe.ts, search-by-category.pipe.ts
+├── Services/                # auth, cart, category, category-sidebar, products,
+│                            # search, sweet-alert, theme, wishlist
+└── Store/
+    └── language/            # NgRx store: actions, effects, reducer, selector
+```
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (LTS recommended)
+- [Angular CLI](https://angular.dev/tools/cli) v19+
+
+### Installation
+
+```bash
+git clone https://github.com/<your-username>/iFind.git
+cd iFind
+npm install
+```
+
+### Development Server
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Navigate to `http://localhost:4200/`. The app will automatically reload on source file changes.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Build
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Build artifacts are output to the `dist/` directory, optimized for production by default.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Running Unit Tests
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+Runs unit tests via [Karma](https://karma-runner.github.io).
 
-For end-to-end (e2e) testing, run:
+## Project Status
 
-```bash
-ng e2e
-```
+🚧 Actively developed as a personal/portfolio project.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## License
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project is open source and available for educational and portfolio purposes.
