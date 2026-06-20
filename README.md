@@ -2,6 +2,8 @@
 
 A fully-featured e-commerce web application built with **standalone Angular 19** components, supporting end-to-end shopping workflows including product browsing, search and filtering, cart management, checkout, and wishlist functionality.
 
+🔗 **Live Demo:** [iFind](https://i-find-store-3rcy8i3ze-hamsa-ragheb-s-projects.vercel.app/home)
+
 ## Features
 
 - **Authentication** — sign-up, sign-in, forgot/reset/update password, and email-based reset code verification
