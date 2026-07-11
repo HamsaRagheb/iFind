@@ -33,6 +33,9 @@ export class CategorySidebarComponent {
       this._categorySidebarService.categorySidebar$.subscribe({
         next: (state) => {
           this.isOpen = state;
+          if (state) {
+            document.body.style.overflowY = 'hidden';
+          }
         },
       });
     this.categorySub = this._categoryService.getAllCategories().subscribe({
@@ -51,14 +54,16 @@ export class CategorySidebarComponent {
   showAllCategories() {
     this._searchService.setCategory('All Categories');
     this.closeSidebar();
+    this._router.navigate(['/search']);
   }
 
   closeSidebar() {
     this._categorySidebarService.closeCategorySidebar();
+    document.body.style.overflowY = '';
   }
 
   ngOnDestroy() {
     this.categorySub?.unsubscribe();
-    document.body.style.overflow = '';
+    this.categorySidebarSub?.unsubscribe();
   }
 }

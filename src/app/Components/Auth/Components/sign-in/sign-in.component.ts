@@ -10,6 +10,7 @@ import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SignInUser } from '../../../../Models/auth.model';
 import { TranslatePipe } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sign-in',
@@ -20,6 +21,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 export class SignInComponent {
   isLoading = false;
   userIsLogin = false;
+  private subscription!: Subscription;
 
   constructor(
     private _authService: AuthService,
@@ -33,7 +35,7 @@ export class SignInComponent {
 
   onSignIn() {
     this.isLoading = true;
-    this._authService
+    this.subscription = this._authService
       .signIn(this.signInForm.getRawValue() as SignInUser)
       .subscribe({
         next: (res) => {
@@ -45,9 +47,13 @@ export class SignInComponent {
           this._authService.setLoggedIn(true);
           this._router.navigate(['/home']);
         },
-        error: (err) => {
+        error: () => {
           this.isLoading = false;
         },
       });
+  }
+
+  ngOnDestroy() {
+    // this.subscription.unsubscribe();
   }
 }

@@ -46,6 +46,7 @@ export class AppComponent {
         this.isLoggedIn = value;
       },
     });
+
     this._store
       .select(selectLanguage)
       .pipe(take(1))

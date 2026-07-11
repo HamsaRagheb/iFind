@@ -15,7 +15,8 @@ export class SearchPipe implements PipeTransform {
     return products.filter(
       (product) =>
         product.title.toLowerCase().includes(term) ||
-        product.description.toLowerCase().includes(term),
+        product.description.toLowerCase().includes(term) ||
+        product.category.name.toLowerCase().includes(term),
     );
   }
 }

@@ -4,15 +4,17 @@ import { Router } from '@angular/router';
 import { SweetAlertService } from '../Services/sweet-alert.service';
 import { catchError, throwError } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../Services/auth.service';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const _router = inject(Router);
   const _sweetAlert = inject(SweetAlertService);
   const _translate = inject(TranslateService);
+  const _authService = inject(AuthService);
 
   return next(req).pipe(
     catchError((err: HttpErrorResponse) => {
-      if (!err.status || err.status === 0) {
+      if (!err.status) {
         _sweetAlert.error(
           _translate.instant('ERRORS.NETWORK_TITLE'),
           _translate.instant('ERRORS.NETWORK_MESSAGE'),
@@ -22,8 +24,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
       switch (err.status) {
         case 401:
-          localStorage.removeItem('userToken');
-          _router.navigate(['/login']);
+          _authService.logout();
           _sweetAlert.error(
             _translate.instant('ERRORS.UNAUTHORIZED_TITLE'),
             _translate.instant('ERRORS.UNAUTHORIZED_MESSAGE'),
@@ -56,6 +57,8 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
             _translate.instant('ERRORS.CONFLICT_TITLE'),
             _translate.instant('ERRORS.CONFLICT_MESSAGE'),
           );
+
+          _router.navigate(['/signIn']);
           break;
 
         case 422:

@@ -156,13 +156,6 @@
 
 .mobile-header {
   width: 100%;
-  padding: 12px 0;
-}
-
-.mobile-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .mobile-actions {
@@ -257,7 +250,6 @@
   }
 
   .search-input {
-    padding: 10px;
     font-size: 14px;
   }
 
@@ -275,10 +267,6 @@
 }
 
 @media (max-width: 991px) {
-  .main-header {
-    padding: 18px 0;
-  }
-
   .search-wrapper {
     display: flex;
     flex-direction: column;

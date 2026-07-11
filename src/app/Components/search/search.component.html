@@ -26,6 +26,9 @@
             <strong *ngIf="selectedCategory">"{{ selectedCategory }}"</strong>
             <strong *ngIf="searchTerm">"{{ searchTerm }}"</strong>
           </p>
+          <button class="shop-btn mt-2" (click)="continueShopping()">
+            {{ "HOME.NO_PRODUCTS_BTN" | translate }}
+          </button>
         </div>
       </ng-template>
     </ng-container>

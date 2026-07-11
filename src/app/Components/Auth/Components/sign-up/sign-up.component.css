@@ -5,7 +5,7 @@
 }
 
 .signup-card {
-  background-color: var(--card-bg);
+  background-color: var(--header-bg);
   padding: 40px;
   border-radius: 25px;
 }
@@ -31,7 +31,7 @@
 .custom-input {
   background-color: var(--input-bg);
   color: var(--text-color);
-  border: 2px solid var(--border-color);
+  border: 2px solid var(--soft-pink);
   border-radius: 12px;
   padding: 12px;
 }

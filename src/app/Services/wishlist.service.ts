@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
 import { WishlistItemsResponse } from '../Models/wishlist.model';
@@ -11,6 +11,7 @@ import { Product } from '../Models/product.model';
 export class WishlistService {
   private wishlistItemsIds = new BehaviorSubject<string[]>([]);
   wishlistItemsIds$ = this.wishlistItemsIds.asObservable();
+  // RxJS map
   wishlistItemsCount$ = this.wishlistItemsIds$.pipe(
     map((idsArray) => idsArray.length),
   );
@@ -27,6 +28,7 @@ export class WishlistService {
       .get<WishlistItemsResponse>(`${environment.baseUrl}/wishlist`)
       .subscribe({
         next: (res) => {
+          // JavaScript Array.map()
           const ids = res.data.map((item: Product) => item._id);
           this.wishlistItemsIds.next(ids);
         },

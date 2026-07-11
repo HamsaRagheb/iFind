@@ -144,8 +144,9 @@
 }
 
 .language-btn:hover {
-  background-color: var(--soft-pink);
-  color: var(--dark-blue);
+  background-color: var(--soft-blue);
+  color: var(--light-gray);
+  border-color: var(--soft-blue);
 }
 
 /* =========================

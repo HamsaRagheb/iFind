@@ -13,6 +13,7 @@ export class SweetAlertService {
       icon: 'success',
       title: this._translate.instant(title),
       text: message ? this._translate.instant(message) : '',
+      confirmButtonText: this._translate.instant('SWEET_ALERT.OK'),
       confirmButtonColor: 'var(--soft-pink)',
     });
   }
@@ -41,6 +42,7 @@ export class SweetAlertService {
       icon: 'error',
       title: this._translate.instant(title),
       text: message ? this._translate.instant(message) : '',
+      confirmButtonText: this._translate.instant('SWEET_ALERT.OK'),
       confirmButtonColor: 'var(--soft-pink)',
     });
   }
@@ -50,6 +52,7 @@ export class SweetAlertService {
       icon: 'warning',
       title: this._translate.instant(title),
       text: message ? this._translate.instant(message) : '',
+      confirmButtonText: this._translate.instant('SWEET_ALERT.OK'),
       confirmButtonColor: 'var(--soft-pink)',
     });
   }

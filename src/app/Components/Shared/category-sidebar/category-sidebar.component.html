@@ -1,4 +1,12 @@
-<div *ngIf="isOpen" [class.open]="isOpen" class="category-sidebar">
+<!-- Overlay -->
+<div
+  class="sidebar-overlay"
+  [class.show]="isOpen"
+  (click)="closeSidebar()"
+></div>
+
+<!-- Sidebar -->
+<div *ngIf="isOpen" [class.open]="isOpen" class="category-sidebar shadow-lg">
   <!-- Header -->
   <div class="sidebar-header">
     <h5 class="sidebar-heading">
@@ -33,10 +41,3 @@
     </ng-container>
   </div>
 </div>
-
-<!-- Overlay -->
-<div
-  class="sidebar-overlay"
-  [class.show]="isOpen"
-  (click)="closeSidebar()"
-></div>

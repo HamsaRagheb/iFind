@@ -80,10 +80,13 @@ export class UpdatePasswordComponent {
           );
           this._router.navigate(['/profile']);
         },
+        error: () => {
+          this.isLoading = false;
+        },
       });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 }

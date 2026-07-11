@@ -20,9 +20,9 @@ import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    NgxSpinnerModule,
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
+    NgxSpinnerModule,
     provideAnimations(),
     provideHttpClient(
       withFetch(),

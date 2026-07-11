@@ -13,6 +13,7 @@ import { AuthService } from '../../../../Services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { SignUpUser } from '../../../../Models/auth.model';
 import { TranslatePipe } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 // 1. Define the custom cross-field validator
 export const passwordMatchValidator: ValidatorFn = (
@@ -44,6 +45,7 @@ export const passwordMatchValidator: ValidatorFn = (
 })
 export class SignUpComponent {
   isLoading = false;
+  private subscription!: Subscription;
 
   constructor(
     private _authService: AuthService,
@@ -78,7 +80,7 @@ export class SignUpComponent {
 
   onSignUp() {
     this.isLoading = true;
-    this._authService
+    this.subscription = this._authService
       .signUp(this.regForm.getRawValue() as SignUpUser)
       .subscribe({
         next: (res) => {
@@ -87,9 +89,12 @@ export class SignUpComponent {
             this._router.navigate(['/signIn']);
           }
         },
-        error: (err) => {
+        error: () => {
           this.isLoading = false;
         },
       });
+  }
+  ngOnDestroy() {
+    // this.subscription.unsubscribe();
   }
 }

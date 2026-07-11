@@ -5,7 +5,7 @@
 }
 
 .signin-card {
-  background-color: var(--card-bg);
+  background-color: var(--header-bg);
   padding: 40px;
   border-radius: 25px;
 }

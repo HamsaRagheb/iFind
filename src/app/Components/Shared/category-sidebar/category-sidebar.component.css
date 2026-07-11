@@ -16,7 +16,6 @@
   z-index: 4000;
   transform: translateX(100%);
   transition: transform var(--transition-duration) ease;
-  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.08);
   -webkit-transform: translateX(100%);
   -moz-transform: translateX(100%);
   -ms-transform: translateX(100%);
@@ -40,19 +39,16 @@
 .sidebar-overlay {
   position: fixed;
   inset: 0;
-
   background: rgba(0, 0, 0, 0.6);
-
+  cursor: url('/images/xmark-solid.png'), auto;
+  z-index: 1050;
   opacity: 0;
   visibility: hidden;
-
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
-
-  z-index: 1050;
-
-  cursor: url('/images/xmark-solid.png'), auto;
+  transition: opacity 0.3s ease,visibility 0.3s ease;
+  -webkit-transition: opacity 0.3s ease,visibility 0.3s ease;
+  -moz-transition: opacity 0.3s ease,visibility 0.3s ease;
+  -ms-transition: opacity 0.3s ease,visibility 0.3s ease;
+  -o-transition: opacity 0.3s ease,visibility 0.3s ease;
 }
 
 .sidebar-overlay.show {

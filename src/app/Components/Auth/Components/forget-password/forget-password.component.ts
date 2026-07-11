@@ -9,6 +9,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../../Services/auth.service';
 import { SweetAlertService } from '../../../../Services/sweet-alert.service';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-forget-password',
@@ -18,6 +19,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 })
 export class ForgetPasswordComponent {
   isLoading = false;
+  private subscription!: Subscription;
 
   emailForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -31,13 +33,10 @@ export class ForgetPasswordComponent {
   ) {}
 
   onSendEmail() {
-    this.emailForm.markAllAsTouched();
-    if (this.emailForm.invalid) return;
-
     this.isLoading = true;
     const email = this.emailForm.get('email')?.value!;
 
-    this._authService.forgetPassword(email).subscribe({
+    this.subscription = this._authService.forgetPassword(email).subscribe({
       next: () => {
         this.isLoading = false;
         this._sweetAlert.toast(
@@ -48,5 +47,9 @@ export class ForgetPasswordComponent {
       },
       error: () => (this.isLoading = false),
     });
+  }
+
+  ngOnDestroy() {
+    // this.subscription.unsubscribe();
   }
 }

@@ -26,10 +26,14 @@
 
     <!-- RIGHT SIDE -->
     <div class="col-lg-6">
-      <div class="product-card h-100">
+      <div
+        class="product-card h-100 text-center text-xl-start d-flex flex-column justify-content-between"
+      >
         <h1 class="product-title">{{ productDetails?.data?.title }}</h1>
 
-        <div class="rating mb-3 d-flex gap-3 align-items-center">
+        <div
+          class="rating mb-3 d-flex flex-column flex-xl-row gap-3 align-items-center"
+        >
           <div class="stars-review d-flex align-items-center gap-1">
             <div
               *ngFor="
@@ -67,7 +71,7 @@
           </div>
         </div>
 
-        <div class="all-prices mb-3">
+        <div class="all-prices my-3">
           <div class="price-option">
             <ng-container
               *ngIf="productDetails?.data?.priceAfterDiscount; else normalPrice"
@@ -182,7 +186,9 @@
           <hr />
 
           <!-- Share -->
-          <div class="d-flex align-items-center">
+          <div
+            class="w-100 d-flex align-items-center justify-content-center justify-content-xl-start mt-4"
+          >
             <h5 class="me-3 mb-0">
               {{ "PRODUCT_DETAILS.SHARE" | translate }}:
             </h5>

@@ -25,7 +25,7 @@ export class CartComponent {
   private cartSub!: Subscription;
   cartProducts?: CartResponse;
   totalCartPrice: number = 0;
-  updateQuantityReuest: any;
+  updateQuantityRequest: any;
 
   orderNote = new FormControl('', [
     Validators.maxLength(30),
@@ -53,20 +53,27 @@ export class CartComponent {
       },
     });
   }
+  /*********************************************************************** */
+
   updateCart(itemId: string, itemCount: number) {
-    clearTimeout(this.updateQuantityReuest);
-    this.updateQuantityReuest = setTimeout(() => {
+    clearTimeout(this.updateQuantityRequest);
+    this.updateQuantityRequest = setTimeout(() => {
       this._cartService.updateCartItem(itemId, itemCount).subscribe({
         next: (res) => {
           console.log(res);
           this.cartProducts = res;
+          this.totalCartPrice = res.data.totalCartPrice;
         },
       });
     }, 1000);
   }
+  /*********************************************************************** */
+
   increaseQuantity(itemId: string, itemCount: number) {
     this.updateCart(itemId, itemCount + 1);
   }
+  /*********************************************************************** */
+
   decreaseQuantity(itemId: string, itemCount: number) {
     if (itemCount === 1) {
       this.deleteItem(itemId);
@@ -74,6 +81,8 @@ export class CartComponent {
       this.updateCart(itemId, itemCount - 1);
     }
   }
+  /*********************************************************************** */
+
   async deleteItem(itemId: string) {
     const confirmed = await this._sweetAlert.confirm(
       'SWEET_ALERT.REMOVE_ITEM_TITLE',
@@ -92,6 +101,7 @@ export class CartComponent {
       },
     });
   }
+  /*********************************************************************** */
 
   async clearAllItems() {
     const confirmed = await this._sweetAlert.confirm(
@@ -116,9 +126,9 @@ export class CartComponent {
       },
     });
   }
-  onSubmitNote() {
-    if (this.orderNote.invalid) return;
+  /*********************************************************************** */
 
+  onSubmitNote() {
     const note = this.orderNote.value?.trim();
     if (!note) {
       this._sweetAlert.error(
@@ -135,7 +145,7 @@ export class CartComponent {
     );
     this.orderNote.reset();
   }
-
+  /*********************************************************************** */
   ngOnDestroy() {
     this.cartSub.unsubscribe();
   }

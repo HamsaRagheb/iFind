@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
     clearInterval(this.sliderInterval); // clear intervals
   }
 }

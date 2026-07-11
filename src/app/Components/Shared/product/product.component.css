@@ -1,14 +1,16 @@
 /* ── Product Card ── */
 .card {
-  width: 100%;
-  max-width: 288px;
   transition: all 0.3s ease;
   background: var(--card-bg);
   border-color: var(--border-color);
 }
 
 .card:hover {
-  transform: translateY(-10px) scale(1.02);
+  transform: translateY(-10px) scale(1.09);
+  -webkit-transform: translateY(-10px) scale(1.09);
+  -moz-transform: translateY(-10px) scale(1.09);
+  -ms-transform: translateY(-10px) scale(1.09);
+  -o-transform: translateY(-10px) scale(1.09);
 }
 
 /* ── Image area ── */
@@ -45,12 +47,12 @@ button.wishlist-button {
 }
 
 /* ── Typography ── */
-.product-details {
-  cursor: pointer;
-}
-
 .card .card-body {
   background: var(--card-bg);
+}
+
+.product-details {
+  cursor: pointer;
 }
 
 .card .card-title {
@@ -71,7 +73,7 @@ button.wishlist-button {
   color: var(--text-color);
   opacity: 0.7;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

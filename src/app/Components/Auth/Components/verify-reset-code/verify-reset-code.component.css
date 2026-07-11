@@ -5,7 +5,7 @@
 }
 
 .signin-card {
-  background-color: var(--card-bg);
+  background-color: var(--header-bg);
   padding: 40px;
   border-radius: 25px;
 }
@@ -17,7 +17,7 @@
 
 .subtitle {
   color: var(--soft-blue);
-  font-size: 0.9rem;
+  font-size: 17px;
 }
 
 .otp-group {
@@ -65,7 +65,7 @@
 
 .bottom-text {
   color: var(--text-color);
-  font-size: 0.9rem;
+  font-size: 17px;
 }
 
 .bottom-text a {

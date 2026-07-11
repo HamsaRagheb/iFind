@@ -1,5 +1,5 @@
 .home {
-  min-height: calc(100vh - 179px);
+  min-height: calc(100vh - 173px);
   position: relative;
   overflow: hidden;
 }
@@ -21,8 +21,12 @@
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
   z-index: 0;
+  transition: opacity 1s ease-in-out;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
 }
 
 .bg-slide.active {
@@ -33,7 +37,7 @@
 }
 
 /* Text overlay */
-.home-overlay {
+.home-text {
   position: absolute;
   left: 60px;
   top: 50%;
@@ -50,25 +54,11 @@
   color: #1a2340;
   line-height: 1.15;
   margin-bottom: 28px;
-  display: flex;
-  flex-direction: column;
 }
 
-.home-title-italic {
-  font-style: italic;
-  font-weight: 600;
-  color: #c8973a;
-  font-size: 2.6rem;
-}
-
-.home-heart {
-  color: #c8973a;
-  font-size: 1.4rem;
-  margin-top: -8px;
-}
-
+/* Subtitle */
 .home-subtitle {
-  font-size: 1.1rem;
+  font-size: 18px;
   color: var(--dark-blue);
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   margin-bottom: 28px;
@@ -105,10 +95,9 @@
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
+  width: 40px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.61);
   cursor: pointer;
   transition: background 0.3s;
 }
@@ -119,14 +108,14 @@
 
 @media screen and (max-width: 991px) {
   .home {
-    height: calc(100vh - 190px);
+    height: calc(100vh - 168px);
   }
 }
 @media (max-width: 768px) {
   .bg-slide {
     background-position: center right;
   }
-  .home-overlay {
+  .home-text {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;

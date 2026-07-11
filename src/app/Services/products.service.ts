@@ -90,7 +90,7 @@ export class ProductsService {
     );
   }
 
-  /*******************************Wishlist*********************************** */
+  /*******************************Wishlist********************************** */
   // Get Wishlist endpoint
   getWishlist(): Observable<WishlistItemsResponse> {
     return this._httpClient.get<WishlistItemsResponse>(

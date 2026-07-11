@@ -17,7 +17,7 @@ export const userGuard: CanActivateFn = (route, state) => {
         }
         return true;
       }),
-      catchError((err) => {
+      catchError(() => {
         return of(true);
       }),
     );

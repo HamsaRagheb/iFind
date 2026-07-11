@@ -2,13 +2,12 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 import {
   Component,
   ElementRef,
-  Input,
   OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { filter, Observable, pairwise, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { AuthService } from '../../../Services/auth.service';
@@ -33,14 +32,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private wishlistSub!: Subscription;
   private categorySub!: Subscription;
   private cartSub!: Subscription;
-  @Input() isLoggedIn!: boolean;
+  private routerSub!: Subscription;
   wishlistCount = 0;
   cartCount = 0;
   categories: Category[] = [];
+  isLoggedIn$!: Observable<boolean>;
   lang$!: Observable<'en' | 'ar'>;
 
-  @ViewChild('searchInputDesktop') searchInputDesktop!: ElementRef;
   @ViewChild('searchInputMobile') searchInputMobile!: ElementRef;
+  @ViewChild('searchInputDesktop') searchInputDesktop!: ElementRef;
 
   constructor(
     private _authService: AuthService,
@@ -53,6 +53,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public _theme: ThemeService,
   ) {
     this.lang$ = this._store.select(selectLanguage);
+    this.isLoggedIn$ = this._authService.isLoggedIn$;
   }
 
   ngOnInit(): void {
@@ -69,10 +70,27 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.cartSub = this._cartService.cartItemsCount$.subscribe(
       (count) => (this.cartCount = count),
     );
+
+    this.routerSub = this._router.events
+      .pipe(
+        filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+        pairwise(),
+      )
+      .subscribe(([prev, curr]) => {
+        const wasOnSearch = prev.urlAfterRedirects.startsWith('/search');
+        const stillOnSearch = curr.urlAfterRedirects.startsWith('/search');
+
+        if (wasOnSearch && !stillOnSearch) {
+          this.clearSearchInputs();
+          this._searchService.setSearchTerm('');
+          this._searchService.setCategory('');
+        }
+      });
   }
 
   onSearch(event: Event): void {
-    this._searchService.setSearchTerm((event.target as HTMLInputElement).value);
+    const input = event.target as HTMLInputElement;
+    this._searchService.setSearchTerm(input.value);
     this._router.navigate(['/search']);
   }
 
@@ -82,9 +100,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
   focuseSearchDesktop() {
     this.searchInputDesktop.nativeElement.focus();
   }
+
+  private clearSearchInputs(): void {
+    if (this.searchInputMobile) {
+      this.searchInputMobile.nativeElement.value = '';
+    }
+    if (this.searchInputDesktop) {
+      this.searchInputDesktop.nativeElement.value = '';
+    }
+  }
   onCategoryChange(event: Event): void {
     const value = (event.target as HTMLSelectElement).value;
-    this._searchService.setCategory(value); // empty string = show all
+    this._searchService.setCategory(value);
     this._router.navigate(['/search']);
   }
 
@@ -105,5 +132,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.wishlistSub.unsubscribe();
     this.categorySub.unsubscribe();
     this.cartSub.unsubscribe();
+    this.routerSub.unsubscribe();
   }
 }

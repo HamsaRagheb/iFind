@@ -67,14 +67,14 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
         this._sweerAlert
           .successWithAction(
             'CART.Added_TO_CART',
-            res.message,
+            'SWEET_ALERT.CART_ADDED',
             'PRODUCT_DETAILS.GO_TO_CART',
           )
           .then((goToCart) => {
             if (goToCart) {
               this._router.navigate(['/cart']);
             } else {
-              this._router.navigate(['/search']);
+              return;
             }
           });
       },
@@ -86,14 +86,28 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       this._productService.deleteFromWishlist(this.id).subscribe({
         next: (res) => {
           this._wishlistService.removeWishListIds(this.id);
-          this._sweerAlert.success('Removed', res.message);
+          this._sweerAlert.success(
+            'SWEET_ALERT.REMOVED_TITLE',
+            'SWEET_ALERT.WISHLIST_REMOVED',
+          );
         },
       });
     } else {
       this._productService.addToWishlist(this.id).subscribe({
         next: (res) => {
           this._wishlistService.addWishlistIds(this.id);
-          this._sweerAlert.success('Added', res.message);
+          this._sweerAlert
+            .successWithAction(
+              'SWEET_ALERT.ADDED',
+              'SWEET_ALERT.WISHLIST_ADDED',
+              'SWEET_ALERT.GO_TO_WISHLIST',
+            )
+            .then((goToWishlist) => {
+              if (goToWishlist) {
+                this._router.navigate(['/wishlist']);
+                return;
+              }
+            });
         },
       });
     }

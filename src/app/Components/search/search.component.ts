@@ -8,6 +8,7 @@ import { SearchService } from '../../Services/search.service';
 import { SearchPipe } from '../../Pipes/search.pipe';
 import { SearchByCategoryPipe } from '../../Pipes/search-by-category.pipe';
 import { TranslatePipe } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -53,6 +54,11 @@ export class SearchComponent {
         this.selectedCategory = category;
       },
     });
+  }
+
+  continueShopping() {
+    this._searchService.setSearchTerm('');
+    this._searchService.setCategory('');
   }
 
   ngOnDestroy() {

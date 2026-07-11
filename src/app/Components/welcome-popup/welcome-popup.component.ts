@@ -1,12 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  Router,
-  RouterLink,
-} from '@angular/router';
-import { filter, take } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-welcome-popup',
@@ -28,7 +23,10 @@ export class WelcomePopupComponent {
 
         if (!hidden && showWelcome === 'true') {
           sessionStorage.removeItem('showWelcome');
-          setTimeout(() => (this.isVisable = true), 1000);
+          setTimeout(() => {
+            this.isVisable = true;
+            document.body.style.overflowY = 'hidden';
+          }, 1000);
         }
       });
   }
@@ -37,7 +35,6 @@ export class WelcomePopupComponent {
     sessionStorage.setItem('hideWelcome', 'true');
     this.isVisable = false;
     document.body.style.overflow = '';
-    this._router.navigate(['/home']);
   }
 
   closeOverlay(event: MouseEvent) {

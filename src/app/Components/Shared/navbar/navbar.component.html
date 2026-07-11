@@ -1,9 +1,14 @@
 <!-- NAVBAR -->
 <nav class="custom-navbar navbar navbar-expand-lg shadow-lg">
   <div class="container navbar-three-cols">
+    <!-- ---------------------------------Desktop----------------------------- -->
     <!-- ── LEFT: Categories ── -->
     <div class="navbar-left d-none d-lg-flex">
-      <button (click)="openCategorySidebar()" class="category-btn">
+      <button
+        (click)="openCategorySidebar()"
+        class="category-btn"
+        data-bs-dismiss="offcanvas"
+      >
         <i class="fa-solid fa-list-ul"></i>
         {{ "NAV.SHOP_BY_CATEGORY" | translate }}
       </button>
@@ -50,7 +55,7 @@
         </li>
       </ul>
     </div>
-
+    <!-- ---------------------------------Mobile----------------------------- -->
     <!-- MOBILE SIDEBAR -->
     <div
       #sidebar
@@ -77,7 +82,11 @@
 
       <!-- Body -->
       <div class="offcanvas-body">
-        <button (click)="openCategorySidebar()" class="category-card">
+        <button
+          (click)="openCategorySidebar()"
+          class="category-card"
+          data-bs-dismiss="offcanvas"
+        >
           <div class="d-flex align-items-center gap-3">
             <i class="fa-solid fa-list-ul"></i>
             <span>{{ "NAV.SHOP_BY_CATEGORY" | translate }}</span>
@@ -89,19 +98,19 @@
           <ul class="sidebar-links">
             <li>
               <a
-                routerLink="/home"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
-                (click)="clodeSidebar()"
+                routerLink="/home"
+                data-bs-dismiss="offcanvas"
                 ><i class="fa-solid fa-house"></i>
                 {{ "NAV.HOME" | translate }}</a
               >
             </li>
             <li>
               <a
-                routerLink="/wishlist"
                 routerLinkActive="active"
-                (click)="clodeSidebar()"
+                routerLink="/wishlist"
+                data-bs-dismiss="offcanvas"
                 class="with-badge"
               >
                 <div>
@@ -113,9 +122,9 @@
             </li>
             <li>
               <a
-                routerLink="/cart"
                 routerLinkActive="active"
-                (click)="clodeSidebar()"
+                routerLink="/cart"
+                data-bs-dismiss="offcanvas"
                 class="with-badge"
               >
                 <div>
@@ -134,7 +143,11 @@
         <div class="sidebar-section">
           <h6 class="sidebar-title">{{ "NAV.SETTINGS" | translate }}</h6>
           <div class="d-flex align-items-center gap-3 px-2">
-            <button (click)="toggleTheme()" class="btn theme-toggle-btn">
+            <button
+              data-bs-dismiss="offcanvas"
+              (click)="toggleTheme()"
+              class="btn theme-toggle-btn"
+            >
               @if (_theme.currentTheme) {
                 <i class="fa-solid fa-sun"></i>
               } @else {
@@ -143,7 +156,11 @@
             </button>
             <div class="language">
               @if (lang$ | async; as lang) {
-                <button class="btn language-btn" (click)="toggleLanguage(lang)">
+                <button
+                  class="btn language-btn"
+                  (click)="toggleLanguage(lang)"
+                  data-bs-dismiss="offcanvas"
+                >
                   <i class="fa-solid fa-globe mx-1"></i>
                   {{ lang === "en" ? "العربية" : "English" }}
                 </button>
@@ -161,7 +178,7 @@
               <a
                 routerLink="/profile"
                 routerLinkActive="active"
-                (click)="clodeSidebar()"
+                data-bs-dismiss="offcanvas"
               >
                 <i class="fa-regular fa-user"></i>
                 {{ "NAV.MY_ACCOUNT" | translate }}
@@ -169,7 +186,11 @@
             </li>
 
             <li>
-              <a (click)="logout()" class="with-badge">
+              <a
+                (click)="logout()"
+                class="with-badge"
+                data-bs-dismiss="offcanvas"
+              >
                 <div>
                   <i class="fa-solid fa-right-from-bracket"></i>
                   {{ "NAV.LOGOUT" | translate }}

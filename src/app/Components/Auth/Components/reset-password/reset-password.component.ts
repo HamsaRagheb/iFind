@@ -28,8 +28,6 @@ const passwordMatchValidator: ValidatorFn = (form: AbstractControl) => {
 export class ResetPasswordComponent implements OnInit {
   isLoading = false;
   email = '';
-  showPassword = false;
-  showConfirm = false;
 
   resetForm = new FormGroup(
     {

@@ -1,3 +1,4 @@
+<!-- Main Home Layout -->
 <div class="home">
   <div class="bg-slider">
     <div
@@ -7,8 +8,8 @@
       [style.backgroundImage]="'url(' + img + ')'"
     ></div>
   </div>
-  <!-- Text overlay -->
-  <div class="home-overlay">
+  <!-- Text text -->
+  <div class="home-text">
     <h1 class="home-title">
       {{ "HOME.TITLE" | translate }}
     </h1>
@@ -20,18 +21,23 @@
   <!-- dot indicators -->
   <div class="slider-dots">
     <span
-      *ngFor="let img of bgImages; let i = index"
+      *ngFor="let imgDot of bgImages; let i = index"
       class="dot"
       [class.active]="i === currentSlide"
       (click)="goToSlide(i)"
     ></span>
   </div>
 </div>
+
+<!-- Categories Slider -->
 <div class="container my-3 py-5">
   <app-slider></app-slider>
 </div>
+
+<!-- Banner -->
 <app-banner></app-banner>
 
+<!-- All Products -->
 <div class="products my-3 py-5">
   <div class="container">
     <ng-container *ngIf="products">

@@ -5,6 +5,7 @@ import { finalize } from 'rxjs';
 
 export const spinnerInterceptor: HttpInterceptorFn = (req, next) => {
   const _spinner = inject(NgxSpinnerService);
+
   _spinner.show();
   document.body.classList.add('spinner-active');
   return next(req).pipe(

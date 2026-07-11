@@ -25,7 +25,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class ProductComponent implements OnInit, OnDestroy {
   @Input() product!: Product;
-  @Output() toggleWishlist = new EventEmitter<string>();
+  @Output() wishlistItemId = new EventEmitter<string>();
   isWishlisted: boolean = false;
   private wishlistSub!: Subscription;
 
@@ -47,14 +47,17 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   onToggleWishlist() {
     if (this.isWishlisted) {
-      if (this.toggleWishlist.observed) {
-        this.toggleWishlist.emit(this.product._id);
+      if (this.wishlistItemId.observed) {
+        this.wishlistItemId.emit(this.product._id);
         return;
       }
       this._productsService.deleteFromWishlist(this.product._id).subscribe({
         next: (res) => {
           this._wishlistService.removeWishListIds(this.product._id);
-          this._sweetAlert.success('Removed', res.message);
+          this._sweetAlert.success(
+            'SWEET_ALERT.REMOVED_TITLE',
+            'SWEET_ALERT.WISHLIST_REMOVED',
+          );
         },
       });
     } else {
@@ -62,7 +65,11 @@ export class ProductComponent implements OnInit, OnDestroy {
         next: (res) => {
           this._wishlistService.addWishlistIds(this.product._id);
           this._sweetAlert
-            .successWithAction('Added', res.message, 'Go To Wishlist')
+            .successWithAction(
+              'SWEET_ALERT.ADDED',
+              'SWEET_ALERT.WISHLIST_ADDED',
+              'SWEET_ALERT.GO_TO_WISHLIST',
+            )
             .then((goToWishlist) => {
               if (goToWishlist) this._router.navigate(['/wishlist']);
             });

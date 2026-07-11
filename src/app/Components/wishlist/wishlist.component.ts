@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { WishlistItemsResponse } from '../../Models/wishlist.model';
 import { Subscription } from 'rxjs';
 import { SweetAlertService } from '../../Services/sweet-alert.service';
 import { ProductsService } from '../../Services/products.service';
@@ -9,6 +8,7 @@ import { WishlistService } from '../../Services/wishlist.service';
 import { BannerComponent } from '../Shared/banner/banner.component';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
+import { Product } from '../../Models/product.model';
 
 @Component({
   selector: 'app-wishlist',
@@ -25,7 +25,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class WishlistComponent implements OnInit, OnDestroy {
   private subscription!: Subscription;
-  wishlistItems?: WishlistItemsResponse;
+  wishlistItems?: Product[];
 
   constructor(
     private _productService: ProductsService,
@@ -34,13 +34,9 @@ export class WishlistComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.loadWishlist();
-  }
-
-  loadWishlist() {
     this.subscription = this._productService.getWishlist().subscribe({
       next: (res) => {
-        this.wishlistItems = res;
+        this.wishlistItems = res.data;
       },
     });
   }
@@ -48,11 +44,14 @@ export class WishlistComponent implements OnInit, OnDestroy {
   deleteWishlistItem(productId: string) {
     this._productService.deleteFromWishlist(productId).subscribe({
       next: (res) => {
-        this._wishlistService.removeWishListIds(productId);
-        this.wishlistItems!.data = this.wishlistItems!.data.filter(
+        this.wishlistItems! = this.wishlistItems!.filter(
           (item) => item._id !== productId,
         );
-        this._sweetAlert.success('Success', res.message);
+        this._wishlistService.removeWishListIds(productId);
+        this._sweetAlert.success(
+          'SWEET_ALERT.REMOVED_TITLE',
+          'SWEET_ALERT.WISHLIST_REMOVED',
+        );
       },
     });
   }

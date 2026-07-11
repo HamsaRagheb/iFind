@@ -5,6 +5,10 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { selectLanguage } from '../../Store/language/language.selector';
+import { CategoryService } from '../../Services/category.service';
+import { Category } from '../../Models/category.model';
+import { SearchService } from '../../Services/search.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-slider',
@@ -13,90 +17,24 @@ import { selectLanguage } from '../../Store/language/language.selector';
   styleUrl: './slider.component.css',
 })
 export class SliderComponent implements OnInit, OnDestroy {
-  // Toggled false -> true around a language switch so Angular fully
-  // destroys and recreates <owl-carousel-o>, forcing Owl to recalculate
-  // slide widths/positions in the new text direction instead of keeping
-  // stale measurements from before the switch.
   showCarousel = true;
+  private langSubscription!: Subscription;
+  private categorySubscription!: Subscription;
+  constructor(
+    private _store: Store,
+    private _categoryService: CategoryService,
+    private _searchService: SearchService,
+    private _router: Router,
+  ) {}
 
-  private _langSubscription!: Subscription;
-
-  constructor(private _store: Store) {}
-
-  categories = [
-    {
-      nameKey: 'SLIDER.MACBOOK_PCS',
-      items: '3+ items',
-      image: 'images/imgi_18_cat01.png',
-    },
-    {
-      nameKey: 'SLIDER.CASUAL_SHIRTS',
-      items: '10+ items',
-      image: 'images/imgi_19_cat02.png',
-    },
-    {
-      nameKey: 'SLIDER.LAPTOP',
-      items: '10+ items',
-      image: 'images/imgi_20_cat03.png',
-    },
-    {
-      nameKey: 'SLIDER.FLORAL_DRESSES',
-      items: '10+ items',
-      image: 'images/imgi_21_cat04.png',
-    },
-    {
-      nameKey: 'SLIDER.WOMENS_SHIRTS',
-      items: '5+ items',
-      image: 'images/imgi_22_cat05.png',
-    },
-    {
-      nameKey: 'SLIDER.TV_LCD',
-      items: '10+ items',
-      image: 'images/imgi_23_cat06.png',
-    },
-    {
-      nameKey: 'SLIDER.WOMENS_DRESSES',
-      items: '10+ items',
-      image: 'images/imgi_24_cat07.png',
-    },
-    {
-      nameKey: 'SLIDER.MENS_APPAREL',
-      items: '10+ items',
-      image: 'images/imgi_25_cat08.png',
-    },
-    {
-      nameKey: 'SLIDER.HANDSFREE',
-      items: '10+ items',
-      image: 'images/imgi_26_cat09.png',
-    },
-    {
-      nameKey: 'SLIDER.JOYSTICKS',
-      items: '10+ items',
-      image: 'images/imgi_27_cat10.png',
-    },
-    {
-      nameKey: 'SLIDER.EARBUDS',
-      items: '10+ items',
-      image: 'images/imgi_28_cat11.png',
-    },
-    {
-      nameKey: 'SLIDER.CASUAL_SHOES',
-      items: '10+ items',
-      image: 'images/imgi_29_cat12.png',
-    },
-    {
-      nameKey: 'SLIDER.COTTON_SOCKS',
-      items: '6+ items',
-      image: 'images/imgi_30_cat13.png',
-    },
-  ];
+  categories: Category[] = [];
 
   customOptions: OwlOptions = this.buildOptions(false);
 
   ngOnInit(): void {
     let isFirst = true;
 
-    this._langSubscription = this._store.select(selectLanguage).subscribe({
+    this.langSubscription = this._store.select(selectLanguage).subscribe({
       next: (lang) => {
         const isRtl = lang === 'ar';
         this.customOptions = this.buildOptions(isRtl);
@@ -112,10 +50,14 @@ export class SliderComponent implements OnInit, OnDestroy {
         });
       },
     });
-  }
 
-  ngOnDestroy(): void {
-    this._langSubscription?.unsubscribe();
+    this.categorySubscription = this._categoryService
+      .getAllCategories()
+      .subscribe({
+        next: (categories) => {
+          this.categories = categories.data;
+        },
+      });
   }
 
   private buildOptions(rtl: boolean): OwlOptions {
@@ -148,5 +90,15 @@ export class SliderComponent implements OnInit, OnDestroy {
       },
       nav: true,
     };
+  }
+
+  selectCategory(category: string) {
+    this._searchService.setCategory(category);
+    this._router.navigate(['/search']);
+  }
+
+  ngOnDestroy(): void {
+    this.langSubscription?.unsubscribe();
+    this.categorySubscription?.unsubscribe();
   }
 }

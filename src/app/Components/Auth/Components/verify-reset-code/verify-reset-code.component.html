@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center align-items-center min-vh-100">
-    <div class="col-lg-4 col-md-7">
+    <div class="col-md-8">
       <div class="signin-card shadow-lg">
         <div class="text-center mb-4">
           <h1 class="title">
@@ -36,7 +36,7 @@
             }
           </div>
 
-          @if (otpForm.invalid && otpForm.touched) {
+          @if (otpForm.touched && otpForm.invalid) {
             <p class="text-danger text-center mb-3">
               {{ "AUTH.VERIFY_RESET_CODE.INVALID" | translate }}
             </p>
@@ -62,9 +62,11 @@
         <div class="text-center mt-4">
           <p class="bottom-text">
             {{ "AUTH.VERIFY_RESET_CODE.WRONG_EMAIL" | translate }}
-            <a routerLink="/forget-password">{{
-              "AUTH.VERIFY_RESET_CODE.GO_BACK" | translate
-            }}</a>
+            <a
+              class="text-decoration-underline"
+              routerLink="/forget-password"
+              >{{ "AUTH.VERIFY_RESET_CODE.GO_BACK" | translate }}</a
+            >
           </p>
         </div>
       </div>

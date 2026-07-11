@@ -34,7 +34,10 @@
           <i class="fa-solid {{ star }}"></i>
         </li>
       </ul>
-      <span class="review-count">(120 review)</span>
+      <span class="review-count"
+        >({{ product.ratingsQuantity }}
+        {{ product.ratingsQuantity === 1 ? " review" : " reviews" }})</span
+      >
     </div>
 
     <div class="price mt-2">
