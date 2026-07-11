@@ -301,8 +301,8 @@
     "NETWORK_TITLE": "Network Error",
     "NETWORK_MESSAGE": "Please check your internet connection and try again.",
 
-    "UNAUTHORIZED_TITLE": "Unauthorized",
-    "UNAUTHORIZED_MESSAGE": "Please log in to continue.",
+    "UNAUTHORIZED_TITLE": "Invalid Credentials",
+    "UNAUTHORIZED_MESSAGE": "The email or password you entered is incorrect. Please check your credentials and try again.",
 
     "NOT_FOUND_TITLE": "Not Found",
     "NOT_FOUND_MESSAGE": "The requested resource was not found.",

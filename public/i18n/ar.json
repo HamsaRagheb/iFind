@@ -303,8 +303,8 @@
     "NETWORK_TITLE": "خطأ في الشبكة",
     "NETWORK_MESSAGE": "يرجى التحقق من اتصال الإنترنت والمحاولة مرة أخرى.",
 
-    "UNAUTHORIZED_TITLE": "غير مصرح",
-    "UNAUTHORIZED_MESSAGE": "يرجى تسجيل الدخول للمتابعة.",
+    "UNAUTHORIZED_TITLE": "بيانات تسجيل الدخول غير صحيحة",
+    "UNAUTHORIZED_MESSAGE": "البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى التحقق من البيانات والمحاولة مرة أخرى.",
 
     "FORBIDDEN_TITLE": "ممنوع",
     "FORBIDDEN_MESSAGE": "ليس لديك صلاحية للوصول إلى هذا المورد.",
