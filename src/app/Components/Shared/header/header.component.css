@@ -302,11 +302,17 @@
     animation: slideDown 0.3s ease;
   }
 
-  .logo {
-    height: 90px;
-    margin: 0 0 0 14px;
+  .logo,
+  .logo-div {
+      height: 90px;
+      margin: 0 0 0 14px;
   }
-
+  .logo img {
+    width: 70%;
+  }
+  .logo-div {
+      max-width: 120px;
+  }
   .badge-count {
     width: 18px;
     height: 18px;
