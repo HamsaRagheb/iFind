@@ -2,7 +2,7 @@
 
 A fully-featured e-commerce web application built with **standalone Angular 19** components, supporting end-to-end shopping workflows including product browsing, search and filtering, cart management, checkout, and wishlist functionality.
 
-🔗 **Live Demo:** [iFind](https://i-find-j2blx5erg-hamsa-ragheb-s-projects.vercel.app)
+🔗 **Live Demo:** [iFind](https://i-find.vercel.app/)
 
 ## Features
 
